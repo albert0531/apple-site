@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple — History & Products</title>
+<style>
+
+  :root{
+    --bg:#fff; --fg:#1d1d1f; --muted:#6e6e73; --accent:#0071e3; --accent-hover:#0077ed;
+    --card:#f5f5f7; --line:#d2d2d7; --soft:#fafafa;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif;
+    background:var(--bg);color:var(--fg);line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px}
+  .promo{background:var(--soft);border-bottom:1px solid var(--line);text-align:center;padding:12px 16px;font-size:14px;color:var(--fg)}
+  .promo a{color:var(--accent);text-decoration:none;margin-left:6px}
+  .topnav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+  .topnav-inner{max-width:980px;margin:0 auto;padding:0 22px;height:44px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .topnav svg.logo{width:14px;height:17px;fill:#1d1d1f}
+  .topnav-links{display:flex;gap:24px;flex:1;justify-content:center;align-items:center;list-style:none}
+  .topnav-links a{color:var(--fg);text-decoration:none;font-size:12px;opacity:.88;transition:opacity .15s}
+  .topnav-links a:hover{opacity:1}
+  .topnav-icons{display:flex;gap:14px;align-items:center}
+  .topnav-icons svg{width:15px;height:15px;fill:#1d1d1f;cursor:pointer}
+  .topnav-links{position:relative}
+  .nav-item{position:relative;padding:0 4px;height:44px;display:flex;align-items:center}
+  .nav-item>a{transition:opacity .15s}
+  .nav-item.active>a{opacity:1}
+
+  /* Mega menu */
+  .mega{position:absolute;left:0;right:0;top:100%;background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);overflow:hidden;max-height:0;transition:max-height .35s cubic-bezier(.32,.72,0,1)}
+  .mega.open{max-height:520px}
+  .mega-panel{display:none;max-width:980px;margin:0 auto;padding:36px 22px;grid-template-columns:repeat(3,1fr);gap:40px}
+  .mega-panel.active{display:grid}
+  .mega-col h4{font-size:12px;color:var(--muted);margin-bottom:14px;font-weight:400;letter-spacing:.2px}
+  .mega-col a{display:block;color:var(--fg);text-decoration:none;font-size:24px;font-weight:500;padding:6px 0;letter-spacing:-.3px;transition:color .15s}
+  .mega-col a:hover{color:var(--accent)}
+  .mega-col a.mega-item{font-size:22px}
+
+  /* Preview overlay */
+  .preview{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;z-index:900;padding:24px}
+  .preview.open{opacity:1;pointer-events:auto}
+  .preview-card{position:relative;width:min(900px,100%);background:#fff;border-radius:18px;padding:24px;display:flex;flex-direction:column;align-items:center;transform:translateY(20px) scale(.97);transition:transform .35s cubic-bezier(.32,.72,0,1)}
+  .preview.open .preview-card{transform:translateY(0) scale(1)}
+  .preview-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.78);color:#fff;border:0;font-size:22px;cursor:pointer;line-height:1}
+  .preview-media{width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .preview-media video,.preview-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .preview-media .fallback{color:#fff;font-size:64px}
+  .preview-body{text-align:center;margin-top:18px}
+  .preview-body h3{font-size:32px;font-weight:600;letter-spacing:-.5px;color:var(--fg);margin-bottom:6px}
+  .preview-body p{color:var(--muted);font-size:17px;margin-bottom:18px}
+  .facts-stack{display:flex;flex-direction:column;gap:14px;max-width:780px;margin:0 auto}
+  .fact-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 26px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .fact-box strong{display:block;color:var(--fg);font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:-.2px}
+  .fact-box p{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
+  .history-grid{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+  .history-row{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start}
+  .history-year{font-size:36px;font-weight:600;letter-spacing:-.5px;color:var(--accent);text-align:right;line-height:1.1}
+  .history-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 24px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+  .history-card h3{font-size:19px;font-weight:600;color:var(--fg);margin-bottom:6px;letter-spacing:-.2px}
+  .history-card p{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
+  @media(max-width:540px){.history-row{grid-template-columns:80px 1fr;gap:14px}.history-year{font-size:24px}}
+  .events-feed{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .event-card-feed{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;text-decoration:none;color:var(--fg);transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+  .event-card-feed:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.08)}
+  .event-card-feed .feed-tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:980px;background:var(--accent);color:#fff;font-weight:500;letter-spacing:.3px;margin-bottom:10px}
+  .event-card-feed h3{font-size:20px;font-weight:600;letter-spacing:-.3px;margin-bottom:8px;color:var(--fg)}
+  .event-card-feed p{color:var(--muted);font-size:14px;line-height:1.55;margin-bottom:12px}
+  .event-card-feed .feed-link{color:var(--accent);font-size:13px;font-weight:500}
+
+  footer{padding:32px 0 24px;text-align:left;color:var(--muted);background:var(--soft);font-size:12px}
+  .footer-inner{max-width:980px;margin:0 auto;padding:0 22px}
+  .footer-offer{font-size:13px;letter-spacing:.2px;margin:8px 0 14px;color:var(--fg)}
+  .footer-rule{border:0;border-top:1px solid var(--line);margin:14px 0}
+  .footer-cols{display:grid;grid-template-columns:repeat(5,1fr);gap:32px;text-align:left}
+  .footer-col h4{color:var(--fg);font-size:13px;font-weight:600;margin-bottom:10px}
+  .footer-col h4.subhead{margin-top:22px}
+  .footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:13px;padding:3px 0}
+  .footer-col a:hover{color:var(--fg);text-decoration:underline}
+  .footer-line{font-size:12px;color:var(--muted);margin:6px 0}
+  .footer-copy{line-height:1.6;padding-bottom:8px}
+  @media(max-width:780px){.footer-cols{grid-template-columns:repeat(2,1fr);gap:24px}}
+  @media(max-width:480px){.footer-cols{grid-template-columns:1fr}}
+  .hero{text-align:center;padding:64px 22px 40px;background:#fff;border-bottom:1px solid var(--line)}
+  .hero .eyebrow{font-size:21px;font-weight:400;color:var(--fg);margin-bottom:6px}
+  .hero h1{font-size:64px;font-weight:600;letter-spacing:-1.5px;line-height:1.05;margin-bottom:14px;color:var(--fg)}
+  .hero .lede{font-size:21px;color:var(--fg);max-width:560px;margin:0 auto 24px}
+  .hero .ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+  .btn{border-radius:980px;padding:11px 22px;font-size:17px;font-weight:400;text-decoration:none;display:inline-block;transition:background .15s;border:none;cursor:pointer}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--accent-hover)}
+  .btn.ghost{color:var(--accent);background:transparent;border:1px solid var(--accent)}
+  .btn.ghost:hover{background:rgba(0,113,227,.1)}
+  .hero .art{margin-top:48px;font-size:120px;text-align:center;opacity:.92;line-height:1}
+  .price-pill{display:inline-flex;align-items:center;gap:14px;padding:12px 22px;border-radius:980px;background:rgba(0,0,0,.78);color:#fff;margin-top:32px;font-size:14px}
+  .price-pill .btn{background:#fff;color:#000;padding:8px 16px;font-size:14px}
+  section{padding:80px 0;background:#fff}
+  section.dark-section{display:none}
+  section .section-head{text-align:center;margin-bottom:40px}
+  section h2{font-size:48px;font-weight:600;letter-spacing:-1px;color:var(--fg)}
+  section .sub{color:var(--muted);font-size:19px;margin-top:8px}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .tile{position:relative;background:var(--card);border-radius:18px;padding:48px 36px;min-height:380px;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;cursor:pointer;transition:transform .25s}
+  .tile:hover{transform:scale(1.005)}
+  .tile .eyebrow{font-size:17px;color:var(--fg);margin-bottom:4px}
+  .tile h3{font-size:32px;font-weight:600;letter-spacing:-.5px;color:var(--fg);margin-bottom:6px}
+  .tile p{color:var(--muted);font-size:17px;margin-bottom:14px}
+  .tile .tile-art{flex:1;display:flex;align-items:center;justify-content:center;font-size:120px;margin-top:24px}
+  section.dark-section .tile{background:#f5f5f7;color:var(--fg)}
+  section.dark-section .tile .eyebrow,section.dark-section .tile h3,section.dark-section .tile p{color:var(--fg)}
+  section.dark-section .tile .tile-art{color:var(--fg)}
+  .ptile{background:#fff;border-radius:18px;padding:48px 32px 24px;text-align:center;cursor:pointer;transition:transform .25s;border:1px solid var(--line)}
+  .ptile:hover{transform:scale(1.005)}
+  .ptile .eyebrow{font-size:14px;color:var(--muted);letter-spacing:.4px;margin-bottom:6px}
+  .ptile h3{font-size:32px;font-weight:600;letter-spacing:-.5px;color:var(--fg);margin-bottom:6px}
+  .ptile p{color:var(--muted);font-size:17px;margin-bottom:18px}
+  .ptile .ptile-art{height:160px;display:flex;align-items:center;justify-content:center;font-size:96px}
+  .icon-tablet{width:48px;height:36px;border:3px solid currentColor;border-radius:6px;position:relative;display:inline-block}
+  .icon-tablet::after{content:"";position:absolute;left:50%;bottom:3px;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:currentColor}
+  .app-logo{width:64px;height:64px;display:inline-block}
+  .app-logo svg{width:100%;height:100%;display:block}
+  .tile .badge{display:inline-block;font-size:12px;padding:4px 12px;border-radius:980px;background:var(--accent);color:#fff;font-weight:500;margin-bottom:12px}
+  .tile .badge.live{background:#34c759}
+  .tile .date{color:var(--muted);font-size:14px;margin-bottom:10px}
+  .tile.pending{border:2px dashed var(--line)}
+  .unlock-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;padding:32px 0}
+  .unlock-track{position:relative;width:min(440px,90%);height:60px;border-radius:30px;background:#f1f1f3;border:1px solid #d2d2d7;cursor:grab;user-select:none;touch-action:none;overflow:hidden}
+  .unlock-track:active{cursor:grabbing}
+  .unlock-fill{position:absolute;inset:0;background:linear-gradient(90deg,#e5e5ea,#f5f5f7);transform:translate3d(-100%,0,0);opacity:.6;will-change:transform}
+  .unlock-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#1d1d1f;font-size:15px;letter-spacing:1px;font-weight:500;text-transform:lowercase;pointer-events:none}
+  .unlock-knob{position:absolute;top:4px;left:4px;width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.9);cursor:grab;touch-action:none;will-change:transform;border:1px solid #d2d2d7}
+  .unlock-knob:active{cursor:grabbing}
+  .unlock-knob.dragging{box-shadow:0 4px 20px rgba(0,113,227,.4)}
+  .unlock-knob svg{transition:transform .2s}
+  .unlock-knob.dragging svg{transform:translateX(2px)}
+  .unlock-progress{display:flex;gap:8px}
+  .up-step{width:36px;height:4px;border-radius:2px;background:#d2d2d7;transition:background .3s}
+  .up-step.done{background:var(--accent)}
+  .unlock-hint{color:var(--muted);font-size:13px;letter-spacing:.3px;margin:0;text-align:center}
+  .unlock-done{display:none;align-items:center;gap:10px;padding:12px 22px;border-radius:980px;background:#f5f5f7;color:#1d1d1f;font-size:15px;font-weight:500;border:1px solid #d2d2d7}
+  .unlock-wrap.done .unlock-track,.unlock-wrap.done .unlock-progress,.unlock-wrap.done .unlock-hint{display:none}
+  .unlock-wrap.done .unlock-done{display:inline-flex}
+  section[data-locked]{opacity:0;transform:translateY(40px);pointer-events:none;transition:opacity .8s ease,transform .8s ease}
+  section[data-locked].show{opacity:1;transform:translateY(0);pointer-events:auto}
+  .park-wrap{background:var(--card);border-radius:18px;padding:40px;border:1px solid var(--line)}
+  .park-wrap svg{width:100%;height:auto;display:block}
+  .park-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:24px}
+  .stat{text-align:center;padding:18px;background:#fff;border-radius:14px;border:1px solid var(--line)}
+  .stat .v{font-size:28px;font-weight:600;color:var(--fg);letter-spacing:-.5px;display:block}
+  .stat .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;display:block}
+  footer{padding:48px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line);font-size:12px;background:var(--soft)}
+  .pmodal{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:1000;visibility:hidden}
+  .pmodal.open{opacity:1;pointer-events:auto;visibility:visible}
+  body.modal-open{overflow:hidden}
+  .pmodal-card{position:relative;width:min(720px,100%);max-height:90vh;background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transform:translateY(20px) scale(.97);transition:transform .3s cubic-bezier(.32,.72,0,1)}
+  .pmodal.open .pmodal-card{transform:translateY(0) scale(1)}
+  .pmodal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.78);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:transform .15s}
+  .pmodal-close:hover{transform:scale(1.08)}
+  .pmodal-hero{height:160px;background:linear-gradient(135deg,#f5f5f7,#e5e5ea);position:relative}
+  .pmodal-body{padding:24px 28px 28px;overflow-y:auto}
+  .pmodal-tag{display:inline-block;font-size:12px;padding:4px 12px;border-radius:980px;background:var(--accent);color:#fff;font-weight:500;margin-bottom:10px}
+  .pmodal-body h2{font-size:32px;font-weight:600;letter-spacing:-.6px;margin-bottom:8px;color:var(--fg)}
+  .pmodal-desc{color:var(--muted);font-size:15px;line-height:1.55;margin-bottom:18px}
+  .pmodal-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .pmodal-col h3{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+  .pmodal-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+  .pmodal-col li{color:var(--fg);font-size:14px;line-height:1.5;padding-left:18px;position:relative}
+  .pmodal-col li::before{content:"•";position:absolute;left:0;color:var(--accent);font-weight:700}
+  @media(max-width:540px){.pmodal-cols{grid-template-columns:1fr}.pmodal-body{padding:20px}.grid-2{grid-template-columns:1fr}.hero h1{font-size:42px}}
+  .tile,.ptile{cursor:pointer}
+
+</style>
+</head>
+<body>
+
+<div class="promo">Get $50–$650 in credit when you trade in iPhone 13 or higher.<a href="#">Learn more ›</a></div>
+<!-- Product preview overlay -->
+<div class="preview" id="preview" aria-hidden="true">
+  <div class="preview-card">
+    <button class="preview-close" id="previewClose" type="button" aria-label="Close">×</button>
+    <div class="preview-media" id="previewMedia"></div>
+    <div class="preview-body">
+      <h3 id="previewTitle">Product</h3>
+      <p id="previewSubtitle">Apple product</p>
+      <a class="btn primary" href="#" id="previewBuy">Buy</a>
+    </div>
+  </div>
+</div>
+
+<section class="hero" style="padding:80px 22px 56px">
+  <p class="eyebrow">iPhone Duo</p>
+  <h1>Hello, hello.</h1>
+  <p class="lede">Pre-order starting 5:00 a.m. PT on 10.16.<br>Available starting 10.23.</p>
+  <div class="ctas">
+    <a class="btn primary" href="#products">Learn more</a>
+    <a class="btn ghost" href="#products">Buy</a>
+  </div>
+  <div class="price-pill">
+    From $1999 or $83.29/mo. for 24 mo.ᵃ
+    <a class="btn" href="#">View pricing</a>
+  </div>
+</section>
+
+<section id="products"><div class="wrap"><div class="section-head"><h2>The Lineup</h2><p class="sub">A few things Apple makes.</p></div>
+  <div class="wrap">
+    <h2>Products</h2>
+    <p class="sub">A few things Apple makes.</p>
+    <div class="grid-2">
+      <div class="tile" data-modal='{"title":"AirPods & Headphones","tag":"Audio","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple wireless audio lineup.","tips":["Adaptive Audio blends ANC + Transparency automatically.","Personalized Spatial Audio scans your ears via TrueDepth.","Charge AirPods Pro 2 with any Apple Watch charger.","Use Find My to ping the case or see last location.","AirPods Max supports lossless over USB-C."],"facts":["AirPods launched December 2016 with iPhone 7.","AirPods Pro 2 doubled ANC with the H2 chip.","AirPods Max designed entirely in-house."]}'>
+        <span class="icon">🎧</span>
+        <h3>AirPods & Headphones</h3>
+        <p>AirPods, AirPods Pro, AirPods Max — wireless audio with the H-series chips, Adaptive Audio, and lossless via USB-C on Max.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"iPhone","tag":"Smartphone","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple flagship smartphone on A19 Pro silicon.","tips":["Back Tap in Accessibility launches apps or screenshots.","Customize Action Button for camera or Focus.","Photographic Styles give natural portraits.","StandBy mode activates when iPhone rotates while charging.","NameDrop shares contacts by bringing two iPhones together."],"facts":["Steve Jobs unveiled iPhone on January 9, 2007.","iPhone 4 introduced the Retina display.","iPhone X killed the home button with Face ID in 2017.","Over 2.2 billion iPhones shipped since 2007."]}'>
+        <span class="icon">📱</span>
+        <h3>iPhone</h3>
+        <p>From the original 2007 launch to iPhone 15 Pro and beyond — Apple's defining product, now on the A-series SoCs with Apple Silicon-class efficiency.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"iPad","tag":"Tablet","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"iPad, iPad Air, iPad Pro, and iPad mini — a full computer with M-series chips.","tips":["Stage Manager on M-series iPads for resizable windows.","Magic Keyboard + Apple Pencil 2 for laptop productivity.","External display up to 6K on iPad Pro M-series.","Reference Mode for color-accurate photo editing.","Freeform for limitless collaborative brainstorming."],"facts":["Steve Jobs introduced iPad on January 27, 2010.","First iPad ran the A4 — Apple first SoC.","iPad Pro M4 is the thinnest Apple product at 5.1mm.","Stage Manager arrived in iPadOS 16 in 2022."]}'>
+        <span class="icon-tablet" aria-label="iPad"></span>
+        <h3>iPad</h3>
+        <p>iPad, iPad Air, iPad Pro, iPad mini — from a "big iPod touch" in 2010 to a full computer with the M-series chips and Stage Manager.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="homescreen">
+  <div class="section-head"><h2>Swipe to Unlock</h2><p class="sub">Like the original iPhone. Drag the slider right to reveal the rest of the page.</p></div>
+
+  <div class="unlock-wrap" id="unlockWrap">
+    <div class="unlock-done" id="unlockDone">
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="#34c759" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>All sections unlocked</span>
+    </div>
+    <div class="unlock-track" id="unlockTrack">
+      <div class="unlock-fill" id="unlockFill"></div>
+      <span class="unlock-label" id="unlockLabel">slide to unlock</span>
+      <div class="unlock-knob" id="unlockKnob" role="slider" tabindex="0" aria-label="Slide to unlock">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M8 5l8 7-8 7" stroke="#1d1d1f" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="unlock-progress" id="unlockProgress">
+      <div class="up-step"></div>
+      <div class="up-step"></div>
+      <div class="up-step"></div>
+      <div class="up-step"></div>
+      <div class="up-step"></div>
+    </div>
+    <p class="unlock-hint" id="unlockHint">Drag right, or use ← → arrow keys</p>
+  </div>
+
+  </section>
+
+<section id="events" data-locked>
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow" style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:6px">Apple Event</p><h2>Apple Events</h2><p class="sub">What's currently featured on apple.com, plus what's coming next.</p>
+    <div class="grid-2">
+      <div class="tile" data-modal='{"title":"iPhone 17 Pro","tag":"Smartphone","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple current flagship headlining apple.com.","tips":["Use the 5x tetraprism telephoto for stage shots.","ProMotion display ramps from 1Hz to 120Hz.","Photographic Styles work in video too.","Pair with MagSafe Battery Pack for travel.","Use StandBy mode at night as a bedside clock."],"facts":["Built on the A19 Pro chip (3nm).","Titanium frame keeps weight under 200g.","Camera Control button is capacitive, not mechanical."]}'>
+        <span class="badge">On apple.com</span>
+        <h3>iPhone 17 Pro</h3>
+        <div class="date">Available now</div>
+        <p>The current flagship headlining Apple's homepage — titanium design, A19 Pro chip, ProMotion display, and the new camera system.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"MacBook Pro with M5","tag":"Laptop","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple pro laptop on M5 silicon.","tips":["Press Touch ID to switch user profiles instantly.","Use Stage Manager for resizable overlapping windows.","Plug into a 6K Pro Display XDR for full Retina desktop mode.","Use Sidecar to extend workspace to iPad.","Charge via MagSafe 3 or any of the Thunderbolt 4 ports."],"facts":["M5 chips are built on a 3nm process.","MacBook Pro 14 starts at 16GB unified memory.","Battery life up to 22 hours per charge."]}'>
+        <span class="badge">On apple.com</span>
+        <h3>MacBook Pro with M5</h3>
+        <div class="date">Available now</div>
+        <p>Latest M5 family chip powering the new MacBook Pro. Headline product on Apple's site today.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"Mac Studio (M5)","tag":"Desktop","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Pro desktop powerhouse on M5 Ultra silicon.","tips":["Stack up to four Pro Display XDRs via Thunderbolt 4.","Use as a render farm with macOS Server.","Pair with Apple silicon for Universal app performance.","Mount under desk vertically to save space.","Memory and SSD are not user-upgradeable — buy for the long term."],"facts":["Mac Studio launched in March 2022.","It sits between Mac mini and Mac Pro in the lineup.","M5 Ultra uses UltraFusion chip-to-chip interconnect."]}'>
+        <span class="badge">Just Released</span>
+        <h3>Mac Studio (M5)</h3>
+        <div class="date">Available for pre-order now</div>
+        <p>Refreshed Mac Studio on the M5 chip. Pre-ordering open — shipping soon.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"iPhone 18 Pro","tag":"Smartphone","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple 2026 Pro flagship on A19 Pro silicon.","tips":["Use the Camera Control button as a trackpad-like shutter.","Shoot in ProRAW + Log for max editing headroom.","Turn on Photographic Styles before composing the shot.","Use StandBy mode for a desk-clock look while charging.","Pair with Apple Watch for auto-unlock."],"facts":["48MP Fusion camera with 5x telephoto.","A19 Pro built on 2nm process.","Apple Intelligence on-device LLM runs entirely private."]}'>
+        <span class="badge live">Just Released</span>
+        <h3>iPhone 18 Pro</h3>
+        <div class="date">Pre-order on apple.com</div>
+        <p>48MP main with 5x telephoto, A19 Pro. Available to order now on apple.com.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"iPhone 18 Pro Max","tag":"Smartphone","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple biggest iPhone on A19 Pro.","tips":["Reachability: swipe down on the Home indicator to bring the top within thumb reach.","6.9" ProMotion display is best in class for HDR.","Use Action Button to start a Voice Memo or workout.","Battery easily lasts a full day of heavy use.","Pair with MagSafe Battery Pack for travel days."],"facts":["Largest iPhone display ever at 6.9 inches.","First iPhone with a 5x tetraprism telephoto.","Bigger vapor chamber for sustained performance."]}'>
+        <span class="badge live">Just Released</span>
+        <h3>iPhone 18 Pro Max</h3>
+        <div class="date">Pre-order on apple.com</div>
+        <p>6.9" ProMotion display, A19 Pro, 5x telephoto. Apple's largest iPhone — live on apple.com.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"iPhone Duo","tag":"Foldable","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple first foldable iPhone.","tips":["Open on a flat surface to use the 8.3" inner display like a mini iPad.","The 6.2" cover display supports all your Lock Screen widgets.","Use Flex Mode for hands-free video calls.","Avoid pressing hard on the crease area when unfolded.","Pair with a MagSafe Duo charger for travel."],"facts":["Apple first foldable phone — shipped September 9.","8.3" inner LTPO display, 120Hz ProMotion.","Titanium hinge rated for 200,000 folds."]}'>
+        <span class="badge">On apple.com</span>
+        <h3>iPhone Duo</h3>
+        <div class="date">Available now</div>
+        <p>Apple's first foldable iPhone, now live on apple.com. 8.3" main display, 6.2" outer — ships September 9.</p>
+      </div>
+      <div class="tile pending" data-modal='{"title":"iPhone 18 / 18 Air","tag":"Smartphone","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"iPhone 18 and iPhone Air (2nd gen) — specs pending.","tips":["Wait for the September keynote for confirmed specs.","Pre-order ASAP — base models sell out fastest.","Trade in your old iPhone for Apple Store credit.","Consider AppleCare+ for accidental damage.","Pair with AirPods 4 for instant setup."],"facts":["Expected to ship September 2026.","iPhone Air 2nd gen expected to be the slimmest at 6.25mm.","Both expected to use A19 silicon."]}'>
+        <span class="badge">Upcoming</span>
+        <h3>iPhone 18 / 18 Air</h3>
+        <div class="date">September 2026 — TBA</div>
+        <p>iPhone 18 and iPhone Air (2nd gen) expected together. Specs, pricing, release date: pending.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"Apple Watch Series 12","tag":"Smartwatch","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple 2026 standard smartwatch with S12 SiP.","tips":["Double-tap gesture to answer calls or snooze alarms.","Use the new Vitals app for overnight health tracking.","Customize Smart Stack with the apps you actually use.","Pair with AirPods for music without your iPhone.","Turn on Schooltime for kids with Watch + cellular."],"facts":["Apple Watch S12 uses the S12 SiP.","Brighter always-on display up to 3000 nits.","watchOS 13 introduces Translate app on the wrist."]}'>
+        <span class="badge live">Just Released</span>
+        <h3>Apple Watch Series 12</h3>
+        <div class="date">On apple.com</div>
+        <p>New S10 SiP with double-tap gesture and brighter always-on display. Live on apple.com.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"Apple Watch Ultra 4","tag":"Smartwatch","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Rugged 45mm titanium Apple Watch with 36h battery.","tips":["Use Action button as a one-tap workout start.","Waypoint navigation for backcountry hiking.","Dive mode for recreational scuba to 40m.","Night mode turns the interface red to preserve dark adaptation.","Use Siren to attract attention in emergencies."],"facts":["49mm titanium case.","Battery life up to 36 hours (72 in Low Power Mode).","Brightest Apple display ever at 3000 nits."]}'>
+        <span class="badge">On apple.com</span>
+        <h3>Apple Watch Ultra 4</h3>
+        <div class="date">On apple.com</div>
+        <p>45mm titanium case, Action button, 36h battery. Now live on apple.com.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"iPad Air (M4)","tag":"Tablet","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Mid-tier iPad with M4 silicon.","tips":["Pair Magic Keyboard + Apple Pencil Pro for laptop use.","Use Stage Manager for multitasking with resizable windows.","11" model fits in a small messenger bag.","Connect a Studio Display for desktop-class workflow.","Use Freeform for collaborative whiteboarding."],"facts":["M4 chip first appeared on iPad Pro.","11" and 13" sizes available.","iPad Air supports Apple Pencil Pro hover preview."]}'>
+        <span class="badge">On apple.com</span>
+        <h3>iPad Air (M4)</h3>
+        <div class="date">Available now</div>
+        <p>Latest iPad Air with the M4 chip — currently featured on apple.com.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"MacBook Air (M5)","tag":"Laptop","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple ultraportable laptop on M5 silicon.","tips":["Fanless design — totally silent even under load.","Up to 18 hours of battery life.","Use Continuity Camera to mount your iPhone as a webcam.","External display up to 6K via one cable.","Use Handoff to start an email on iPhone and finish on Mac."],"facts":["M5 brings hardware ray tracing to the Air lineup.","13" and 15" sizes available.","Starts at 16GB unified memory."]}'>
+        <span class="badge">On apple.com</span>
+        <h3>MacBook Air (M5)</h3>
+        <div class="date">Available now</div>
+        <p>Latest MacBook Air on the M5 chip — currently featured on apple.com.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"iPad Pro (M5)","tag":"Tablet","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple flagship tablet on M5 silicon.","tips":["M5 chip beats most laptop CPUs in single-core.","Tandem OLED display gets up to 1600 nits HDR.","Apple Pencil Pro adds barrel roll + squeeze gestures.","Connect Pro Display XDR for 6K desktop-class workflow.","Reference Mode calibrated for color-critical work."],"facts":["M5 chip first on iPad Pro before Mac.","Thinnest Apple product at 5.1mm.","Supports up to 16TB of storage."]}'>
+        <span class="badge">On apple.com</span>
+        <h3>iPad Pro (M5)</h3>
+        <div class="date">Available now</div>
+        <p>Latest iPad Pro on the M5 chip — currently featured on apple.com.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"iPhone 17e","tag":"Smartphone","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Lower-cost successor to the iPhone 16e.","tips":["Apple Intelligence runs entirely on-device.","Single rear camera — still 48MP Fusion.","USB-C port, no ProRes.","Best battery life in the e-line so far.","Comes in six fun colors including Mint and Lavender."],"facts":["Successor to the iPhone 16e launched in 2025.","A19 chip (non-Pro variant).","Starts at 8GB unified memory."]}'>
+        <span class="badge">On apple.com</span>
+        <h3>iPhone 17e</h3>
+        <div class="date">Available now</div>
+        <p>Lower-cost successor to the iPhone 16e. Currently featured on apple.com.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"MacBook Neo","tag":"Laptop","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Budget MacBook on the A18 Pro chip.","tips":["iPhone-class silicon in the cheapest MacBook tier.","Use Universal Control to share keyboard/mouse with iPad.","Fanless design — silent under everyday use.","Great for students and writing.","Apple Trade In gives credit toward the Neo."],"facts":["First MacBook with an A-series chip (A18 Pro).","Starts at 8GB unified memory.","Available in Sky Blue, Silver, and Starlight."]}'>
+        <span class="badge">On apple.com</span>
+        <h3>MacBook Neo</h3>
+        <div class="date">Available now</div>
+        <p>Budget MacBook on the A18 Pro chip. iPhone-class silicon in the cheapest MacBook tier. Currently featured on apple.com.</p>
+      </div>
+      <div class="tile" data-modal='{"title":"Mac mini (M6)","tag":"Desktop","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Compact desktop on M6 silicon.","tips":["Tiny 5x5 footprint fits anywhere.","Pair with Studio Display for full Apple desktop setup.","Use as a home server with macOS Server.","Front-facing power button + USB-C ports.","Configure with 10Gb Ethernet for NAS use."],"facts":["Mac mini redesigned in 2024 with the M4.","M6 silicon further reduces fan noise.","Starts at 16GB unified memory."]}'>
+        <span class="badge">Just Released</span>
+        <h3>Mac mini (M6)</h3>
+        <div class="date">Available for pre-order now</div>
+        <p>New Mac mini on the M6 chip. Pre-ordering open — shipping soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="facts" data-locked>
+  <div class="wrap">
+    <h2>Did You Know?</h2>
+    <p class="sub">A handful of Apple facts worth repeating.</p>
+    <div class="facts-stack">
+      <div class="fact-box"><strong>Apple is older than the personal computer industry.</strong><p>Founded April 1, 1976 — before the Apple II, before Microsoft moved to Albuquerque, before the word "PC" meant anything.</p></div>
+      <div class="fact-box"><strong>Steve Wozniak designed the Apple I by hand.</strong><p>The whole machine was a single circuit board Woz handed out at the Homebrew Computer Club.</p></div>
+      <div class="fact-box"><strong>The iPhone was almost "Purple."</strong><p>Apple considered names including Purple and Telipod. "iPhone" only narrowly beat them out internally.</p></div>
+      <div class="fact-box"><strong>Apple almost went bankrupt in 1997.</strong><p>90 days from insolvency before Microsoft invested $150M — a bailout arranged by Steve Jobs after his return.</p></div>
+      <div class="fact-box"><strong>The "Apple" name came from a fruitarian diet.</strong><p>Jobs was into fruitarian diets at the time and liked the sound. The logo came later.</p></div>
+      <div class="fact-box"><strong>M-series chips started on iPad, not Mac.</strong><p>The A4 in 2010 was Apple's first in-house SoC. M1 in 2020 finished the transition: Macs running iPad silicon.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="intelligence" data-locked><div class="wrap"><div class="section-head"><h2>Apple Intelligence</h2><p class="sub">The new era of AI on Apple devices.</p></div>
+  <div class="wrap">
+    <h2>Apple Intelligence & New Siri</h2>
+    <p class="sub">What Apple unveiled at WWDC 2026, on-device and in the cloud.</p>
+    <div class="grid-2">
+      <div class="fact"><strong>On-device foundation models</strong><p>Apple's next-gen LLM runs locally on A19 Pro and M5-class chips. Summaries, Writing Tools, Image Playground, Genmoji — all without leaving your device.</p></div>
+      <div class="fact"><strong>Private Cloud Compute</strong><p>Heavier requests route to a custom Apple Silicon server. Apple can't see your data — the architecture is publicly audited.</p></div>
+      <div class="fact"><strong>New Siri (2026)</strong><p>Conversational, on-screen aware, and able to act across apps. "Send the file Eric sent me last week to Mom" — actually works now, on-device when possible.</p></div>
+      <div class="fact"><strong>Visual Intelligence</strong><p>Long-press the camera or a photo to search, translate, summarize, or shop. Now understands context across apps and the screen you're looking at.</p></div>
+      <div class="fact"><strong>Image Playground + Genmoji</strong><p>Generate images in styles like Sketch, Illustration, and Animation. Genmoji builds custom emoji from your prompt, on-device.</p></div>
+      <div class="fact"><strong>Writing Tools, leveled up</strong><p>Rewrite, proofread, summarize — across Mail, Notes, Pages, Safari, and third-party apps via the standard API.</p></div>
+      <div class="fact"><strong>ChatGPT integration</strong><p>Optional handoff to ChatGPT for queries Siri can't answer locally. Free, no account needed, privacy prompts before any data leaves.</p></div>
+      <div class="fact"><strong>Developer APIs</strong><p>App Intents, the Foundation Model framework, and Image Playground API — third-party apps can plug into Apple Intelligence directly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="history" data-locked>
+  <div class="wrap">
+    <div class="section-head"><h2>History</h2><p class="sub">Five decades, one company.</p></div>
+    <div class="history-grid">
+      <div class="history-row">
+        <div class="history-year">1976</div>
+        <div class="history-card">
+          <h3>Founded in a garage</h3>
+          <p>Steve Jobs, Steve Wozniak, and Ronald Wayne sell the Apple I for $666.66.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">1977</div>
+        <div class="history-card">
+          <h3>Apple II ships</h3>
+          <p>One of the first successful personal computers. Color graphics, expandable.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">1984</div>
+        <div class="history-card">
+          <h3>Macintosh</h3>
+          <p>GUI for the masses. The "1984" Super Bowl ad airs once and rewrites ad history.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">1985</div>
+        <div class="history-card">
+          <h3>Jobs leaves Apple</h3>
+          <p>Board-level ousting. He goes on to found NeXT and buy Pixar.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">1997</div>
+        <div class="history-card">
+          <h3>Jobs returns</h3>
+          <p>Apple acquires NeXT; Jobs back as interim CEO. The Microsoft investment follows.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">2001</div>
+        <div class="history-card">
+          <h3>iPod & iTunes</h3>
+          <p>"1,000 songs in your pocket." Apple reshapes music distribution.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">2007</div>
+        <div class="history-card">
+          <h3>iPhone</h3>
+          <p>"An iPod, a phone, an internet communicator." Three products, one device.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">2010</div>
+        <div class="history-card">
+          <h3>iPad</h3>
+          <p>Apple defines a new category between phone and laptop.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">2011</div>
+        <div class="history-card">
+          <h3>Tim Cook becomes CEO</h3>
+          <p>Jobs passes away August 24. Cook takes over; the company more than triples in value under his tenure.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">2020</div>
+        <div class="history-card">
+          <h3>Apple Silicon on Mac</h3>
+          <p>M1 launches. Macs leave Intel behind. iPhone-class efficiency, laptop-class performance.</p>
+        </div>
+      </div>
+      <div class="history-row">
+        <div class="history-year">2024</div>
+        <div class="history-card">
+          <h3>Apple Intelligence & Vision Pro</h3>
+          <p>Spatial computing ships. On-device LLMs land in iOS, iPadOS, macOS.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="park" data-locked>
+  <h2>Apple Park</h2>
+  <p class="sub">The spaceship campus in Cupertino. Opened 2017. Designed by Foster + Partners.</p>
+
+  <div class="park-wrap">
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" aria-label="Top-down view of Apple Park">
+      <defs>
+        <radialGradient id="parkGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#2997ff" stop-opacity=".18"/>
+          <stop offset="100%" stop-color="#2997ff" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="ringFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a2a2c"/>
+          <stop offset="100%" stop-color="#1a1a1c"/>
+        </linearGradient>
+        <linearGradient id="ringTop" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#3a3a3c"/>
+          <stop offset="50%" stop-color="#4a4a4e"/>
+          <stop offset="100%" stop-color="#3a3a3c"/>
+        </linearGradient>
+      </defs>
+
+      <rect width="800" height="320" fill="url(#parkGlow)"/>
+
+      <g fill="#1f3d2b" opacity=".7">
+        <circle cx="60" cy="60" r="3"/><circle cx="120" cy="40" r="2.5"/><circle cx="200" cy="55" r="3"/>
+        <circle cx="640" cy="50" r="3"/><circle cx="720" cy="80" r="2.5"/><circle cx="760" cy="140" r="3"/>
+        <circle cx="40" cy="180" r="3"/><circle cx="80" cy="260" r="2.5"/><circle cx="180" cy="290" r="3"/>
+        <circle cx="620" cy="280" r="3"/><circle cx="700" cy="240" r="2.5"/><circle cx="750" cy="190" r="3"/>
+        <circle cx="300" cy="30" r="2.5"/><circle cx="400" cy="25" r="3"/><circle cx="500" cy="30" r="2.5"/>
+      </g>
+
+      <ellipse cx="400" cy="170" rx="300" ry="95" fill="url(#ringFill)" stroke="url(#ringTop)" stroke-width="3"/>
+      <ellipse cx="400" cy="170" rx="240" ry="55" fill="#0a0a0c" stroke="#2c2c2e" stroke-width="1"/>
+      <g stroke="#0a0a0c" stroke-width="1.5" opacity=".75">
+        <line x1="120" y1="170" x2="680" y2="170"/>
+      </g>
+      <g stroke="#2c2c2e" stroke-width="1" fill="none">
+        <ellipse cx="400" cy="170" rx="270" ry="80"/>
+        <ellipse cx="400" cy="170" rx="225" ry="65"/>
+      </g>
+      <ellipse cx="400" cy="170" rx="55" ry="14" fill="#1a3a5a" opacity=".7"/>
+      <ellipse cx="400" cy="170" rx="40" ry="9" fill="#225a8a" opacity=".5"/>
+
+      <g>
+        <circle cx="690" cy="230" r="14" fill="#2997ff" opacity=".25"/>
+        <circle cx="690" cy="230" r="7" fill="#2997ff"/>
+      </g>
+      <g>
+        <circle cx="500" cy="55" r="12" fill="#2997ff" opacity=".25"/>
+        <circle cx="500" cy="55" r="6" fill="#2997ff"/>
+        <line x1="500" y1="55" x2="500" y2="80" stroke="#2997ff" stroke-width="1.5" stroke-dasharray="3,3"/>
+      </g>
+
+      <g transform="translate(60,260)" fill="#86868b" font-family="sans-serif" font-size="10">
+        <text x="-4" y="0">N</text>
+        <line x1="0" y1="4" x2="0" y2="20" stroke="#86868b" stroke-width="1"/>
+        <polygon points="0,4 -3,12 3,12" fill="#86868b"/>
+      </g>
+
+      <g font-family="-apple-system, sans-serif" font-size="10" fill="#86868b">
+        <text x="690" y="252" text-anchor="middle">Visitor Center</text>
+        <text x="500" y="40" text-anchor="middle">Steve Jobs Theater</text>
+        <text x="400" y="195" text-anchor="middle" fill="#5a8fc0" font-size="9">Jobs Pond</text>
+        <text x="400" y="105" text-anchor="middle" fill="#cfcfd4" font-size="11" font-weight="500">The Ring · 1 mile circumference</text>
+      </g>
+    </svg>
+
+    <div class="park-stats">
+      <div class="stat"><span class="v">175</span><span class="k">Acres</span></div>
+      <div class="stat"><span class="v">12,000</span><span class="k">Employees</span></div>
+      <div class="stat"><span class="v">1 mi</span><span class="k">Ring</span></div>
+      <div class="stat"><span class="v">100%</span><span class="k">Renewable</span></div>
+      <div class="stat"><span class="v">9,000</span><span class="k">Trees</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="events-feed" data-locked>
+  <div class="wrap">
+    <div class="section-head"><h2>Apple Events</h2><p class="sub">Every keynote, live stream, and Apple Event on YouTube.</p></div>
+    <div class="events-feed">
+      <a class="event-card-feed" href="https://www.youtube.com/watch?v=ufLmAvDUO24" target="_blank" rel="noopener">
+        <div class="feed-tag">Sep 2026</div>
+        <h3>iPhone Duo · "Hello, hello."</h3>
+        <p>The foldable era begins. iPhone Duo, iPhone 18 Pro & Pro Max, Apple Watch Series 12, Apple Watch Ultra 4.</p>
+        <span class="feed-link">Watch on YouTube ›</span>
+      </a>
+      <a class="event-card-feed" href="https://www.youtube.com/watch?v=QE4ogX6oWgI" target="_blank" rel="noopener">
+        <div class="feed-tag">Jun 2026</div>
+        <h3>WWDC 2026</h3>
+        <p>Apple Intelligence, new Siri, visionOS 27, macOS 27. The next decade of the platform.</p>
+        <span class="feed-link">Watch on YouTube ›</span>
+      </a>
+      <a class="event-card-feed" href="https://www.youtube.com/watch?v=IT4TpCGuY8w" target="_blank" rel="noopener">
+        <div class="feed-tag">Mar 2026</div>
+        <h3>Mac Studio + MacBook Neo</h3>
+        <p>M5 silicon lands on the Mac Studio and the brand-new budget MacBook Neo.</p>
+        <span class="feed-link">Watch on YouTube ›</span>
+      </a>
+      <a class="event-card-feed" href="https://www.youtube.com/watch?v=Pvb5OpAyrZA" target="_blank" rel="noopener">
+        <div class="feed-tag">Sep 2025</div>
+        <h3>iPhone 17 Pro Launch</h3>
+        <p>Titanium A19 Pro, ProMotion, and the biggest camera upgrade in years.</p>
+        <span class="feed-link">Watch on YouTube ›</span>
+      </a>
+      <a class="event-card-feed" href="https://www.youtube.com/watch?v=QuyU0MNiOek" target="_blank" rel="noopener">
+        <div class="feed-tag">Sep 2024</div>
+        <h3>iPhone 16 Pro · Camera Control</h3>
+        <p>The first iPhone built around Apple Intelligence from day one.</p>
+        <span class="feed-link">Watch on YouTube ›</span>
+      </a>
+      <a class="event-card-feed" href="https://www.youtube.com/watch?v=RJt0MhTcYZo" target="_blank" rel="noopener">
+        <div class="feed-tag">Jun 2024</div>
+        <h3>WWDC 2024</h3>
+        <p>Apple Intelligence, visionOS 2, iOS 18. The dawn of on-device AI.</p>
+        <span class="feed-link">Watch on YouTube ›</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-line footer-offer">Offer is by Albert C.</p>
+    <hr class="footer-rule">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Shop and Learn</h4>
+        <a href="#">Store</a>
+        <a href="#">Mac</a>
+        <a href="#">iPad</a>
+        <a href="#">iPhone</a>
+        <a href="#">Watch</a>
+        <a href="#">Vision</a>
+        <a href="#">AirPods</a>
+        <a href="#">TV & Home</a>
+        <a href="#">AirTag</a>
+        <a href="#">Accessories</a>
+        <a href="#">Apple Wallet</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#">Manage Your Apple Account</a>
+        <a href="#">Apple Store Account</a>
+        <a href="#">iCloud.com</a>
+        <h4 class="subhead">Entertainment</h4>
+        <a href="#">Apple TV</a>
+        <a href="#">Apple Music</a>
+        <a href="#">Apple Arcade</a>
+        <a href="#">Apple Fitness+</a>
+        <a href="#">Apple Podcasts</a>
+        <a href="#">Apple Books</a>
+        <a href="#">App Store</a>
+      </div>
+      <div class="footer-col">
+        <h4>Apple Store</h4>
+        <a href="#">Find a Store</a>
+        <a href="#">Genius Bar</a>
+        <a href="#">Today at Apple</a>
+        <a href="#">Group Reservations</a>
+        <a href="#">Apple Camp</a>
+        <a href="#">Apple Store App</a>
+        <a href="#">Certified Refurbished</a>
+        <a href="#">Apple Trade In</a>
+        <a href="#">Financing</a>
+        <a href="#">Order Status</a>
+        <a href="#">Shopping Help</a>
+      </div>
+      <div class="footer-col">
+        <h4>For Business</h4>
+        <a href="#">Apple and Business</a>
+        <a href="#">Shop for Business</a>
+        <h4 class="subhead">For Education</h4>
+        <a href="#">Apple and Education</a>
+        <a href="#">Shop for College</a>
+        <h4 class="subhead">For Healthcare</h4>
+        <a href="#">Apple and Healthcare</a>
+        <h4 class="subhead">For Government</h4>
+        <a href="#">Apple and Government</a>
+      </div>
+      <div class="footer-col">
+        <h4>Apple Values</h4>
+        <a href="#">Accessibility</a>
+        <a href="#">Education</a>
+        <a href="#">Environment</a>
+        <a href="#">Privacy</a>
+        <a href="#">Supply Chain Innovation</a>
+        <h4 class="subhead">About Apple</h4>
+        <a href="#">Newsroom</a>
+        <a href="#">Apple Leadership</a>
+        <a href="#">Career Opportunities</a>
+        <a href="#">Investors</a>
+        <a href="#">Ethics and Compliance</a>
+        <a href="#">Events</a>
+        <a href="#">Contact Apple</a>
+      </div>
+    </div>
+    <hr class="footer-rule">
+    <p class="footer-line footer-copy">Copyright © 2026 Offer is by Albert C. All rights reserved. · Privacy Policy · Terms of Use · Sales and Refunds · Legal · Site Map</p>
+  </div>
+</footer>
+
+<!-- Product modal -->
+<div class="pmodal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="pmodal-card">
+    <button class="pmodal-close" id="mClose" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </button>
+    <div class="pmodal-hero" id="mHero"></div>
+    <div class="pmodal-body">
+      <span class="pmodal-tag" id="mTag">Overview</span>
+      <h2 id="mTitle">Product</h2>
+      <p class="pmodal-desc" id="mDesc"></p>
+      <div class="pmodal-cols">
+        <div class="pmodal-col">
+          <h3>Tips</h3>
+          <ul id="mTips"></ul>
+        </div>
+        <div class="pmodal-col">
+          <h3>Fun Facts</h3>
+          <ul id="mFacts"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Force any <video autoplay muted> to actually play after first user interaction
+  // (Safari blocks autoplay on file:// until interaction)
+  document.addEventListener('click touchstart keydown', function forcePlay(){
+    document.querySelectorAll('video[autoplay]').forEach(v => { v.muted = true; v.play().catch(()=>{}); });
+  }, { once:false, capture:true });
+
+  // Sept 9, 2026 at 10:00 AM PT (typical Apple keynote time)
+  // Unlock slider
+  (function(){
+    const knob = document.getElementById('unlockKnob');
+    const fill = document.getElementById('unlockFill');
+    const label = document.getElementById('unlockLabel');
+    const hint = document.getElementById('unlockHint');
+    const track = document.getElementById('unlockTrack');
+    const steps = document.querySelectorAll('.up-step');
+    if (!knob || !track) return;
+
+    const sections = ['events','facts','history','park','events-feed'];
+    let step = 0;
+    let dragging = false, startX = 0, knobStart = 0;
+
+    const KNOB = 56, max = track.offsetWidth - KNOB - 8;
+    let pos = 0, lastPos = 0, velocity = 0, lastT = 0, raf = 0;
+
+    function tick(){
+      const now = performance.now();
+      const dt = Math.max(1, now - lastT);
+      velocity = (pos - lastPos) / dt;
+      lastPos = pos;
+      lastT = now;
+      const pct = pos / max;
+      knob.style.transform = `translate3d(${pos}px,0,0)`;
+      fill.style.transform = `translate3d(${-100 + pct * 100}%,0,0)`;
+      label.style.opacity = Math.max(0, 1 - pct * 1.4);
+      if (pct >= .95){ pos = 0; stopLoop(); unlock(); return; }
+      raf = requestAnimationFrame(tick);
+    }
+    function startLoop(){ lastT = performance.now(); lastPos = pos; raf = requestAnimationFrame(tick); }
+    function stopLoop(){ cancelAnimationFrame(raf); raf = 0; }
+
+    function unlock(){
+      if (step >= sections.length) return;
+      const id = sections[step];
+      steps[step].classList.add('done');
+      const el = document.querySelector(`section[data-locked][id="${id}"]`);
+      if (el) el.classList.add('show');
+      step++;
+      if (step >= sections.length){
+        label.textContent = 'unlocked';
+        hint.textContent = 'All sections revealed · scroll freely';
+        knob.style.cursor = 'default';
+        track.parentElement.classList.add('done');
+      } else {
+        label.textContent = ['slide for more','keep going','almost there','one more','final slide'][step-1] || 'slide to unlock';
+        hint.textContent = step + ' / ' + sections.length + ' unlocked';
+      }
+      pos = 0; velocity = 0;
+      knob.style.transform = 'translate3d(0,0,0)';
+      fill.style.transform = 'translate3d(-100%,0,0)';
+      label.style.opacity = 1;
+      knob.style.transition = 'none';
+      fill.style.transition = 'none';
+      label.style.transition = 'none';
+    }
+
+    function onDown(e){
+      if (step >= sections.length) return;
+      // hard-reset visual + state in case a previous swipe left things stuck
+      knob.style.transition = 'none';
+      fill.style.transition = 'none';
+      label.style.transition = 'none';
+      knob.style.transform = 'translate3d(0,0,0)';
+      fill.style.transform = 'translate3d(-100%,0,0)';
+      label.style.opacity = 1;
+      pos = 0;
+      velocity = 0;
+      dragging = true;
+      knob.classList.add('dragging');
+      startX = (e.touches ? e.touches[0].clientX : e.clientX);
+      knobStart = 0;
+      startLoop();
+    }
+    function onMove(e){
+      if (!dragging) return;
+      const x = (e.touches ? e.touches[0].clientX : e.clientX);
+      const dx = x - startX;
+      pos = Math.max(0, Math.min(max, knobStart + dx));
+      if (e.cancelable) e.preventDefault();
+    }
+    function onUp(){
+      if (!dragging) return;
+      dragging = false;
+      knob.classList.remove('dragging');
+      stopLoop();
+      if (pos < max * .95){
+        // momentum-decay back to 0
+        const startP = pos, v = Math.max(-2, Math.min(2, velocity * 16));
+        const duration = 420;
+        const t0 = performance.now();
+        knob.style.transition = 'transform .42s cubic-bezier(.22,.61,.36,1)';
+        fill.style.transition = 'transform .42s cubic-bezier(.22,.61,.36,1)';
+        label.style.transition = 'opacity .32s ease';
+        function anim(){
+          const t = (performance.now() - t0) / duration;
+          if (t >= 1){
+            pos = 0;
+            knob.style.transform = 'translate3d(0,0,0)';
+            fill.style.transform = 'translate3d(-100%,0,0)';
+            label.style.opacity = 1;
+            knob.style.transition = 'none';
+            fill.style.transition = 'none';
+            label.style.transition = 'none';
+            return;
+          }
+          const ease = 1 - Math.pow(1 - t, 3);
+          pos = startP * (1 - ease) + v * 60 * t * (1 - ease);
+          if (pos < 0) pos = 0;
+          const pct = pos / max;
+          knob.style.transform = `translate3d(${pos}px,0,0)`;
+          fill.style.transform = `translate3d(${-100 + pct * 100}%,0,0)`;
+          requestAnimationFrame(anim);
+        }
+        anim();
+      }
+    }
+
+    knob.addEventListener('mousedown', onDown);
+    knob.addEventListener('touchstart', onDown, {passive:false});
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onMove, {passive:false});
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchend', onUp);
+    knob.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); unlock(); }
+      if (e.key === 'ArrowRight' && step < sections.length) unlock();
+    });
+
+    // Save Password
+    let _activeCheck = null;
+    function buildInputs(len, onComplete){
+      const row = document.createElement('div');
+      row.className = 'pw-input-row';
+      const inputs = [];
+      let raf = 0;
+      const check = (commit) => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const v = inputs.map(i => i.value).join('');
+          onComplete(v, commit);
+        });
+      };
+      _activeCheck = check;
+      for (let i=0;i<len;i++){
+        const inp = document.createElement('input');
+        inp.type = 'text';
+        inp.maxLength = 1;
+        inp.className = 'pw-input';
+        inp.autocomplete = 'one-time-code';
+        inp.inputMode = 'numeric';
+        inp.pattern = '[0-9]*';
+        inp.setAttribute('data-form-type', 'other');
+        inp.setAttribute('data-lpignore', 'true');
+        inp.setAttribute('data-1p-ignore', 'true');
+        inp.addEventListener('input', () => {
+          if (inp.value && i < len-1) inputs[i+1].focus();
+          check(false);
+        });
+        inp.addEventListener('keyup', () => check(false));
+        inp.addEventListener('keydown', e => {
+          if (e.key === 'Backspace' && !inp.value && i>0) inputs[i-1].focus();
+          if (e.key === 'Enter'){ e.preventDefault(); check(true); }
+        });
+        inputs.push(inp);
+        row.appendChild(inp);
+      }
+      return { row, inputs };
+    }
+    function startSetting(){
+      pwMode = 'setting';
+      pwCreate.style.display='none';
+      pwStatus.classList.remove('ok','bad');
+      pwStatus.classList.add('live');
+      pwStatus.textContent = 'Choose a 4-digit password · memorize it';
+      const existing = pwWrap.querySelector('.pw-input-row');
+      if (existing) existing.remove();
+      const chipsOld = pwWrap.querySelector('.pw-chips');
+      if (chipsOld) chipsOld.remove();
+      const chips = document.createElement('div');
+      chips.className = 'pw-chips';
+      for (let i=0;i<4;i++){
+        const c = document.createElement('span');
+        c.className = 'pw-chip';
+        chips.appendChild(c);
+      }
+      const { row, inputs } = buildInputs(4, (v, commit) => {
+        const filled = v.length;
+        chips.querySelectorAll('.pw-chip').forEach((c, idx) => c.classList.toggle('on', idx < filled));
+        if (v.length < 4) return;
+        if (!commit) return;
+        savedPassword = v;
+        inputs.forEach(i => { i.classList.remove('bad'); i.classList.add('ok'); i.blur(); });
+        pwStatus.classList.remove('live','bad');
+        pwStatus.classList.add('ok');
+        pwStatus.textContent = 'Saved · password armed';
+        pwMode = 'armed';
+        setTimeout(() => {
+          pwWrap.style.transition = 'opacity .6s ease';
+          pwWrap.style.opacity = '0';
+          setTimeout(() => {
+            pwWrap.style.display = 'none';
+            pwWrap.style.opacity = '';
+            pwWrap.style.transition = '';
+            hint.textContent = 'Type your password to unlock — no swipe needed';
+            showVerify();
+          }, 600);
+        }, 1000);
+      });
+      pwWrap.insertBefore(row, pwStatus);
+      pwWrap.insertBefore(chips, pwStatus);
+      inputs[0].focus();
+    }
+    function showVerify(){
+      pwMode = 'verify';
+      pwWrap.style.display = '';
+      pwWrap.style.opacity = '';
+      pwStatus.classList.remove('ok','bad');
+      pwStatus.classList.add('live');
+      pwStatus.textContent = 'Enter your 4-digit password to unlock';
+      const existing = pwWrap.querySelector('.pw-input-row');
+      if (existing) existing.remove();
+      const chipsOld = pwWrap.querySelector('.pw-chips');
+      if (chipsOld) chipsOld.remove();
+      const chips = document.createElement('div');
+      chips.className = 'pw-chips';
+      for (let i=0;i<4;i++){
+        const c = document.createElement('span');
+        c.className = 'pw-chip';
+        chips.appendChild(c);
+      }
+      const { row, inputs } = buildInputs(4, (v, commit) => {
+        const filled = v.length;
+        chips.querySelectorAll('.pw-chip').forEach((c, idx) => c.classList.toggle('on', idx < filled));
+        if (v.length < 4) return;
+        if (v === savedPassword){
+          inputs.forEach(i => i.classList.remove('bad'));
+          inputs.forEach(i => i.classList.add('ok'));
+          pwStatus.classList.remove('live','bad');
+          pwStatus.classList.add('ok');
+          pwStatus.textContent = 'Correct · unlocked';
+          pwMode = 'unlocked';
+          setTimeout(() => {
+            pwWrap.style.transition = 'opacity .6s ease';
+            pwWrap.style.opacity = '0';
+            setTimeout(() => {
+              pwWrap.style.display = 'none';
+              pwWrap.style.transition = '';
+              hint.textContent = 'Unlocked · all sections free';
+            }, 600);
+          }, 900);
+        } else if (commit){
+          inputs.forEach(i => {
+            i.classList.remove('ok');
+            i.classList.add('bad');
+            setTimeout(() => i.classList.remove('bad'), 400);
+          });
+          pwStatus.classList.remove('live','ok');
+          pwStatus.classList.add('bad');
+          pwStatus.textContent = 'Wrong · try again';
+          setTimeout(() => {
+            inputs.forEach(i => i.value = '');
+            inputs[0].focus();
+          }, 350);
+        }
+      });
+      pwWrap.insertBefore(row, pwStatus);
+      pwWrap.insertBefore(chips, pwStatus);
+      inputs[0].focus();
+    }
+    function armVerify(){
+      pwMode = 'verify';
+      const existing = pwWrap.querySelector('.pw-input-row');
+      if (existing) existing.remove();
+      const chipsOld = pwWrap.querySelector('.pw-chips');
+      if (chipsOld) chipsOld.remove();
+      const chips = document.createElement('div');
+      chips.className = 'pw-chips';
+      for (let i=0;i<4;i++){
+        const c = document.createElement('span');
+        c.className = 'pw-chip';
+        chips.appendChild(c);
+      }
+      pwWrap.style.display = '';
+      pwWrap.style.opacity = '';
+      pwStatus.classList.remove('ok','bad');
+      pwStatus.classList.add('live');
+      pwStatus.textContent = 'Re-enter your 4-digit password';
+      const { row, inputs } = buildInputs(4, (v, commit) => {
+        const filled = v.length;
+        chips.querySelectorAll('.pw-chip').forEach((c, idx) => c.classList.toggle('on', idx < filled));
+        if (v.length < 4) return;
+        if (v === savedPassword){
+          inputs.forEach(i => i.classList.remove('bad'));
+          inputs.forEach(i => i.classList.add('ok'));
+          pwStatus.classList.remove('live','bad');
+          pwStatus.classList.add('ok');
+          pwStatus.textContent = 'Correct · fully unlocked';
+          pwMode = 'unlocked';
+          setTimeout(() => {
+            pwWrap.style.transition = 'opacity .6s ease';
+            pwWrap.style.opacity = '0';
+            setTimeout(() => {
+              pwWrap.style.display = 'none';
+              pwWrap.style.transition = '';
+              hint.textContent = 'All sections free · scroll anywhere';
+            }, 600);
+          }, 900);
+        } else if (commit){
+          inputs.forEach(i => {
+            i.classList.remove('ok');
+            i.classList.add('bad');
+            setTimeout(() => i.classList.remove('bad'), 400);
+          });
+          pwStatus.classList.remove('live','ok');
+          pwStatus.classList.add('bad');
+          pwStatus.textContent = 'Wrong · try again';
+          setTimeout(() => {
+            inputs.forEach(i => i.value = '');
+            inputs[0].focus();
+          }, 350);
+        }
+      });
+      pwWrap.insertBefore(row, pwStatus);
+      pwWrap.insertBefore(chips, pwStatus);
+      inputs[0].focus();
+    }
+    pwCreate.addEventListener('click', startSetting);
+
+    // gate further slider drags once armed
+    const origUnlock = unlock;
+    unlock = function(){
+      if (pwMode === 'armed' || pwMode === 'verify'){
+        pwWrap.style.display = '';
+        pwWrap.style.opacity = '';
+        if (pwMode === 'armed') armVerify();
+        else {
+          const existing = pwWrap.querySelector('.pw-input-row');
+          if (existing) existing.remove();
+          const { row, inputs } = buildInputs(4);
+          pwWrap.insertBefore(row, pwStatus);
+          inputs[0].focus();
+        }
+        pos = 0; velocity = 0;
+        return;
+      }
+      origUnlock();
+    };
+  })();
+
+  const TARGET = new Date('2026-09-09T10:00:00-07:00').getTime();
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(root){
+    const diff = Math.max(0, TARGET - Date.now());
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    root.querySelector('[data-cd="d"]').textContent = pad(d);
+    root.querySelector('[data-cd="h"]').textContent = pad(h);
+    root.querySelector('[data-cd="m"]').textContent = pad(m);
+    root.querySelector('[data-cd="s"]').textContent = pad(s);
+  }
+  ['cd-iphone','cd-fold'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    tick(el);
+    setInterval(() => tick(el), 1000);
+  });
+
+  // Product catalog (real Apple MP4 assets)
+  const PRODUCTS = {
+    'macbook-pro':  { title:'MacBook Pro', sub:'Built for Apple Intelligence', image:'./images/iphone-duo.png' },
+    'macbook-neo':  { title:'MacBook Neo', sub:'iPhone-class silicon in the cheapest MacBook tier', image:'./images/iphone-duo.png' },
+    'macbook-air':  { title:'MacBook Air', sub:'Light. Silent. M5 fast.', video:null },
+    'imac':         { title:'iMac', sub:'All-in-one. All in color.', image:'./images/iphone-duo.png' },
+    'mac-mini':     { title:'Mac mini', sub:'Tiny shell. Massive performance.', image:'./images/iphone-duo.png' },
+    'mac-studio':   { title:'Mac Studio', sub:'Outrageous performance', video:null },
+    'mac-pro':      { title:'Mac Pro', sub:'Workstation, reimagined', video:null },
+    'iphone-duo':   { title:'iPhone Duo', sub:'Hello, hello.', image:'./images/iphone-duo.png' },
+    'iphone-18-pro':{ title:'iPhone 18 Pro', sub:'Pro further.', image:'./images/iphone-duo.png' },
+    'iphone-air':   { title:'iPhone Air', sub:'Impossibly thin. Unbelievably light.', image:'./images/iphone-duo.png' },
+    'iphone-17':    { title:'iPhone 17', sub:'A total powerhouse.', image:'./images/iphone-duo.png' },
+    'iphone-17e':   { title:'iPhone 17e', sub:'Serious value. Serious fun.', image:'./images/iphone-duo.png' },
+    'ipad-pro':     { title:'iPad Pro', sub:'Unbelievably thin. Outrageously powerful.', image:'./images/iphone-duo.png' },
+    'ipad-air':     { title:'iPad Air', sub:'Light. Bright. Full of might.', image:'./images/iphone-duo.png' },
+    'ipad':         { title:'iPad 11-inch (A16)', sub:'Colorfully capable. Surprisingly affordable.', image:'./images/iphone-duo.png' },
+    'watch-ultra':  { title:'Apple Watch Ultra 4', sub:'Adventure awaits.', image:'./images/iphone-duo.png' },
+    'watch-s12':    { title:'Apple Watch Series 12', sub:'A great deal to love.', image:'./images/iphone-duo.png' },
+    'airpods-pro':  { title:'AirPods Pro 3', sub:'The world\'s best in-ear Active Noise Cancellation.', image:'./images/iphone-duo.png' },
+    'airpods-5':    { title:'AirPods 5', sub:'Effortless. Magical.', image:'./images/iphone-duo.png' },
+    'airpods-max':  { title:'AirPods Max 2', sub:'Cinematic. Beyond compare.', image:'./images/iphone-duo.png' },
+  };
+
+  // Mega menu (topnav) — open on click, with smooth animation
+  (function(){
+    const mega = document.getElementById('mega');
+    const navItems = document.querySelectorAll('.nav-item');
+    const panels = document.querySelectorAll('.mega-panel');
+    let activeCat = null;
+    function open(cat){
+      if (activeCat === cat && mega.classList.contains('open')) return;
+      activeCat = cat;
+      navItems.forEach(li => li.classList.toggle('active', li.dataset.cat === cat));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.cat === cat));
+      mega.classList.add('open');
+    }
+    function close(){
+      activeCat = null;
+      navItems.forEach(li => li.classList.remove('active'));
+      mega.classList.remove('open');
+    }
+    navItems.forEach(li => {
+      const cat = li.dataset.cat;
+      li.addEventListener('click', e => {
+        e.preventDefault();
+        if (cat === activeCat && mega.classList.contains('open')) close();
+        else open(cat);
+      });
+    });
+    document.addEventListener('click', e => {
+      if (!e.target.closest('#topnavLinks') && !e.target.closest('.mega')) close();
+    });
+  })();
+
+  // Product preview — click .mega-item to play MP4 in an overlay
+  (function(){
+    const preview = document.getElementById('preview');
+    const media = document.getElementById('previewMedia');
+    const title = document.getElementById('previewTitle');
+    const subtitle = document.getElementById('previewSubtitle');
+    const closeBtn = document.getElementById('previewClose');
+    let currentVideo = null;
+    function show(productId){
+      const p = PRODUCTS[productId];
+      if (!p) return;
+      title.textContent = p.title;
+      subtitle.textContent = p.sub;
+      media.innerHTML = '';
+      if (p.image){
+        const img = document.createElement('img');
+        img.src = p.image;
+        img.alt = p.title;
+        media.appendChild(img);
+      } else if (p.video){
+        const v = document.createElement('video');
+        v.src = p.video;
+        v.autoplay = true;
+        v.muted = true;
+        v.loop = true;
+        v.playsInline = true;
+        media.appendChild(v);
+        currentVideo = v;
+      } else {
+        const fb = document.createElement('div');
+        fb.className = 'fallback';
+        fb.textContent = '🎬';
+        media.appendChild(fb);
+      }
+      preview.classList.add('open');
+    }
+    function hide(){
+      preview.classList.remove('open');
+      if (currentVideo){ currentVideo.pause(); currentVideo = null; }
+      setTimeout(() => media.innerHTML = '', 250);
+    }
+    document.querySelectorAll('.mega-item').forEach(el => {
+      el.addEventListener('click', e => { e.preventDefault(); show(el.dataset.product); });
+    });
+    closeBtn.addEventListener('click', hide);
+    preview.addEventListener('click', e => { if (e.target === preview) hide(); });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') hide(); });
+  })();
+
+  // Product click → modal
+  (function(){
+    const modal = document.getElementById('productModal');
+    if (!modal) return;
+    const mTitle = document.getElementById('mTitle');
+    const mTag = document.getElementById('mTag');
+    const mHero = document.getElementById('mHero');
+    const mDesc = document.getElementById('mDesc');
+    const mTips = document.getElementById('mTips');
+    const mFacts = document.getElementById('mFacts');
+    const mBody = document.querySelector('.pmodal-body');
+    const mClose = document.getElementById('mClose');
+
+    function open(card){
+      const data = JSON.parse(card.getAttribute('data-modal'));
+      mTitle.textContent = data.title || '';
+      mTag.textContent = data.tag || 'Overview';
+      mHero.style.background = data.hero || 'linear-gradient(135deg,#2c2c2e,#1d1d1f)';
+      mDesc.textContent = data.desc || '';
+      mTips.innerHTML = (data.tips || []).map(t => `<li>${t}</li>`).join('');
+      mFacts.innerHTML = (data.facts || []).map(f => `<li>${f}</li>`).join('');
+      if (mBody) mBody.scrollTop = 0;
+      modal.classList.add('open');
+      document.body.classList.add('modal-open');
+    }
+    function close(){
+      modal.classList.remove('open');
+      document.body.classList.remove('modal-open');
+    }
+
+    document.querySelectorAll('[data-modal]').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        open(card);
+      });
+    });
+
+    mClose.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); close(); });
+    modal.addEventListener('click', e => {
+      if (e.target === modal) { e.preventDefault(); close(); }
+    });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+</script>
+</body>
+</html>
