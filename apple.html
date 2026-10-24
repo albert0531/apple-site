@@ -73,6 +73,34 @@
   .event-card-feed h3{font-size:20px;font-weight:600;letter-spacing:-.3px;margin-bottom:8px;color:var(--fg)}
   .event-card-feed p{color:var(--muted);font-size:14px;line-height:1.55;margin-bottom:12px}
   .event-card-feed .feed-link{color:var(--accent);font-size:13px;font-weight:500}
+  .premium-wrap{display:flex;justify-content:center;padding:80px 0}
+  .premium-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:24px;padding:48px 40px;max-width:680px;width:100%;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,.12)}
+  .premium-card h2{font-size:36px;font-weight:600;letter-spacing:-.6px;margin:8px 0 8px;color:var(--fg)}
+  .premium-sub{color:var(--muted);font-size:16px;margin-bottom:24px;line-height:1.55}
+  .premium-start{padding:14px 32px;font-size:17px}
+  .premium-progress{display:flex;align-items:center;gap:14px;justify-content:center;margin:24px 0}
+  .premium-progress span{font-size:14px;color:var(--muted);font-weight:500;min-width:60px}
+  .premium-bar{flex:1;max-width:280px;height:6px;background:#e5e5ea;border-radius:3px;overflow:hidden}
+  .premium-fill{height:100%;background:linear-gradient(90deg,#2997ff,#5eead4);width:0;transition:width .3s ease;border-radius:3px}
+  .premium-q{padding:8px 0}
+  .premium-question{font-size:20px;font-weight:600;color:var(--fg);margin-bottom:18px;line-height:1.4}
+  .premium-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left}
+  .premium-options button{background:#f5f5f7;border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:14px;color:var(--fg);cursor:pointer;text-align:left;transition:background .15s,border-color .15s;line-height:1.4}
+  .premium-options button:hover{background:#e5e5ea;border-color:var(--accent)}
+  .premium-options button.correct{background:#d1f5d8;border-color:#34c759;color:#0a6b2a}
+  .premium-options button.wrong{background:#ffd6d2;border-color:#ff3b30;color:#a31515}
+  .premium-options button:disabled{cursor:default;opacity:.7}
+  .premium-feedback{font-size:14px;color:var(--muted);margin-top:14px;min-height:20px}
+  .premium-feedback.bad{color:#ff3b30}
+  .premium-feedback.good{color:#34c759}
+  .premium-reward{padding:20px 0 0}
+  .premium-reward h3{font-size:28px;font-weight:600;letter-spacing:-.5px;margin:14px 0 8px;color:var(--fg)}
+  .premium-reward>p{color:var(--muted);margin-bottom:24px}
+  .reward-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:20px;text-align:left}
+  .reward-card{background:#f5f5f7;border-radius:14px;padding:18px 20px;border:1px solid var(--line)}
+  .reward-card h4{font-size:15px;font-weight:600;color:var(--accent);margin-bottom:8px}
+  .reward-card p{color:var(--muted);font-size:13px;line-height:1.5}
+  @media(max-width:540px){.premium-options{grid-template-columns:1fr}.premium-card{padding:32px 24px}}
 
   footer{padding:32px 0 24px;text-align:left;color:var(--muted);background:var(--soft);font-size:12px}
   .footer-inner{max-width:980px;margin:0 auto;padding:0 22px}
@@ -100,6 +128,20 @@
   .hero .art{margin-top:48px;font-size:120px;text-align:center;opacity:.92;line-height:1}
   .price-pill{display:inline-flex;align-items:center;gap:14px;padding:12px 22px;border-radius:980px;background:rgba(0,0,0,.78);color:#fff;margin-top:32px;font-size:14px}
   .price-pill .btn{background:#fff;color:#000;padding:8px 16px;font-size:14px}
+  .hero-watch-row{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
+  .watch-pill{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border:1px solid var(--line);border-radius:980px;background:#fff;text-decoration:none;color:var(--fg);font-size:14px;font-weight:500;transition:background .15s,border-color .15s,transform .15s}
+  .watch-pill:hover{background:var(--soft);border-color:var(--accent);transform:translateY(-1px)}
+  .watch-pill .watch-emoji{font-size:18px}
+  .watch-pill .watch-arrow{color:var(--accent);font-weight:500}
+
+  /* Liquid-glass pill tab bar (iPhone-sized) */
+  .glass-bar-wrap{display:flex;justify-content:center;padding:10px 22px 14px;background:#fff;position:sticky;top:0;z-index:40}
+  .glass-bar{display:inline-flex;gap:3px;padding:4px;background:rgba(255,255,255,.65);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.75);border-radius:24px;box-shadow:0 6px 20px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.7)}
+  .glass-pill{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:18px;background:transparent;border:0;color:var(--fg);font-size:12px;font-weight:500;cursor:pointer;transition:background .25s ease,color .25s ease,transform .2s ease;white-space:nowrap}
+  .glass-pill:hover{background:rgba(0,0,0,.04)}
+  .glass-pill.active{background:rgba(0,0,0,.82);color:#fff;box-shadow:0 3px 10px rgba(0,0,0,.18)}
+  .glass-pill .g-icon{font-size:13px;line-height:1}
+  .glass-pill .g-label{font-size:12px}
   section{padding:80px 0;background:#fff}
   section.dark-section{display:none}
   section .section-head{text-align:center;margin-bottom:40px}
@@ -125,7 +167,7 @@
   .icon-tablet::after{content:"";position:absolute;left:50%;bottom:3px;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:currentColor}
   .app-logo{width:64px;height:64px;display:inline-block}
   .app-logo svg{width:100%;height:100%;display:block}
-  .tile .badge{display:inline-block;font-size:12px;padding:4px 12px;border-radius:980px;background:var(--accent);color:#fff;font-weight:500;margin-bottom:12px}
+  .tile .badge{display:inline-block;align-self:flex-start;font-size:12px;padding:4px 12px;border-radius:980px;background:var(--accent);color:#fff;font-weight:500;margin-bottom:12px}
   .tile .badge.live{background:#34c759}
   .tile .date{color:var(--muted);font-size:14px;margin-bottom:10px}
   .tile.pending{border:2px dashed var(--line)}
@@ -150,7 +192,8 @@
   section[data-locked].show{opacity:1;transform:translateY(0);pointer-events:auto}
   .park-wrap{background:var(--card);border-radius:18px;padding:40px;border:1px solid var(--line)}
   .park-wrap svg{width:100%;height:auto;display:block}
-  .park-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:24px}
+  .park-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:24px}
+  @media(max-width:780px){.park-stats{grid-template-columns:repeat(3,1fr)}}
   .stat{text-align:center;padding:18px;background:#fff;border-radius:14px;border:1px solid var(--line)}
   .stat .v{font-size:28px;font-weight:600;color:var(--fg);letter-spacing:-.5px;display:block}
   .stat .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;display:block}
@@ -173,7 +216,263 @@
   .pmodal-col li{color:var(--fg);font-size:14px;line-height:1.5;padding-left:18px;position:relative}
   .pmodal-col li::before{content:"•";position:absolute;left:0;color:var(--accent);font-weight:700}
   @media(max-width:540px){.pmodal-cols{grid-template-columns:1fr}.pmodal-body{padding:20px}.grid-2{grid-template-columns:1fr}.hero h1{font-size:42px}}
+  @media(max-width:780px){
+    section h2{font-size:32px}
+    .hero h1{font-size:42px}
+    .hero .lede{font-size:17px}
+    .hero .eyebrow{font-size:17px}
+    .tile{padding:32px 24px;min-height:280px}
+    .tile h3{font-size:24px}
+    .tile p{font-size:15px}
+    .glass-bar-wrap{padding:8px 14px 10px}
+    .glass-bar{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap}
+    .glass-pill{flex-shrink:0}
+  }
+  @media(max-width:480px){.glass-pill{padding:5px 10px;font-size:11px}.glass-pill .g-label{font-size:11px}}
+
+  /* Pro banner */
+  .pro-banner{position:fixed;top:14px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:14px;padding:12px 18px 12px 14px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,215,0,.4);border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.18),0 0 0 4px rgba(255,215,0,.15);z-index:200;animation:proPulse 2.5s ease-in-out infinite}
+  .pro-banner.shown{display:flex}
+  .pro-banner .pro-star{font-size:28px;filter:drop-shadow(0 0 8px rgba(255,214,10,.6))}
+  .pro-banner-text strong{display:block;color:#1d1d1f;font-size:15px;font-weight:600}
+  .pro-banner-text small{display:block;color:#6e6e73;font-size:12px;margin-top:2px}
+  .pro-banner-close{background:none;border:0;color:#86868b;font-size:22px;cursor:pointer;padding:0 4px;line-height:1}
+  @keyframes proPulse{0%,100%{box-shadow:0 12px 40px rgba(0,0,0,.18),0 0 0 4px rgba(255,215,0,.15)}50%{box-shadow:0 12px 40px rgba(0,0,0,.22),0 0 0 10px rgba(255,215,0,.25)}}
+
+  /* Pro tile */
+  .pro-tile{background:linear-gradient(180deg,#fffbf0,#fff8db);border:1px solid rgba(255,215,0,.35);box-shadow:0 6px 20px rgba(255,215,0,.08)}
+  .pro-badge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#FFD60A,#FF9F0A)!important;color:#1d1d1f!important;font-weight:600!important}
+  .pro-spec{list-style:none;padding:0;margin:10px 0 4px;font-family:"SF Mono","Menlo",monospace;font-size:12.5px;line-height:1.65}
+  .pro-spec li{padding:5px 0;border-bottom:1px dashed rgba(0,0,0,.08);color:var(--muted)}
+  .pro-spec li:last-child{border-bottom:0}
+  .pro-spec li b{color:#1d1d1f;font-weight:600;display:inline-block;min-width:80px}
+  .artist-note{text-align:center;color:var(--muted);font-size:13px;font-style:italic;margin-top:36px;letter-spacing:.2px}
   .tile,.ptile{cursor:pointer}
+
+  /* Home View — iPhone home screen launcher */
+  section{scroll-margin-top:78px}
+  .home-wrap{display:flex;justify-content:center;padding:6px 22px 0}
+  #home-view{background:linear-gradient(180deg,#fff 0%,#fbfbfd 40%,#fff 100%)}
+  .lg.home-stage{position:relative;border-radius:38px;padding:40px 28px 34px;overflow:hidden;margin-top:18px;
+    background:
+      radial-gradient(58% 52% at 10% 6%,rgba(255,110,190,.55),transparent 64%),
+      radial-gradient(52% 48% at 90% 10%,rgba(0,150,255,.55),transparent 64%),
+      radial-gradient(60% 56% at 80% 94%,rgba(130,80,255,.50),transparent 66%),
+      radial-gradient(52% 52% at 18% 92%,rgba(0,205,195,.50),transparent 64%),
+      radial-gradient(45% 40% at 50% 50%,rgba(255,225,120,.34),transparent 70%),
+      linear-gradient(140deg,#dfeaff 0%,#f2e6ff 44%,#dff7ff 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 -1px 0 rgba(255,255,255,.4),0 26px 64px -30px rgba(0,0,0,.30)}
+  .home-stage .stage-head{position:relative;z-index:2;text-align:center;margin-bottom:26px}
+  .home-stage .stage-head h3{font-size:26px;font-weight:600;letter-spacing:-.4px;color:var(--fg)}
+  .home-stage .stage-head p{color:var(--muted);font-size:15px;margin-top:4px}
+  .lg.home-glass{
+    background:
+      radial-gradient(48% 44% at 8% 4%,rgba(255,110,190,.42),transparent 66%),
+      radial-gradient(46% 42% at 94% 8%,rgba(0,150,255,.42),transparent 66%),
+      radial-gradient(52% 48% at 86% 96%,rgba(130,80,255,.40),transparent 68%),
+      radial-gradient(46% 46% at 10% 94%,rgba(0,205,195,.38),transparent 66%),
+      linear-gradient(140deg,#e7efff 0%,#f4e9ff 48%,#e3f9ff 100%);
+  }
+  .home-phone{width:min(360px,92vw);background:#000;border-radius:46px;padding:11px;box-shadow:0 34px 70px rgba(0,0,0,.16),inset 0 0 0 2px #2a2a2e;position:relative}
+  .home-screen{border-radius:36px;overflow:hidden;background:radial-gradient(130% 90% at 18% -10%,#4a6fd0 0%,#2b3f80 38%,#141a35 72%,#0d1024 100%);padding:12px 12px 10px;position:relative}
+  .home-screen::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 40% at 86% 10%,rgba(255,120,190,.26),transparent 70%),radial-gradient(50% 35% at 6% 86%,rgba(0,190,255,.20),transparent 70%);pointer-events:none}
+  .home-status{position:relative;display:flex;align-items:center;justify-content:space-between;padding:2px 18px 0;color:#fff;font-size:12px;font-weight:600;letter-spacing:.2px;z-index:2}
+  .hs-notch{position:absolute;left:50%;top:0;transform:translateX(-50%);width:92px;height:21px;border-radius:0 0 14px 14px;background:#000}
+  .hs-right{display:flex;align-items:center;gap:6px}
+  .hs-batt{width:22px;height:11px;border:1.2px solid rgba(255,255,255,.8);border-radius:3px;position:relative;display:inline-block}
+  .hs-batt::before{content:"";position:absolute;left:1.6px;top:1.6px;width:12px;height:6px;background:#fff;border-radius:1px}
+  .hs-batt::after{content:"";position:absolute;right:-3px;top:3px;width:2px;height:5px;background:rgba(255,255,255,.8);border-radius:0 1px 1px 0}
+  .app-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px 6px;padding:8px 4px 4px}
+  @media(max-width:900px){.app-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  @media(max-width:560px){.app-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 2px}.app-ico{width:46px;height:46px;font-size:22px}.app-name{font-size:9.5px}}
+  .app{background:none;border:0;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font:inherit;min-width:0;max-width:100%}
+  .app-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:25px;line-height:1;box-shadow:0 6px 14px rgba(0,0,0,.20),0 1px 2px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 6px rgba(255,255,255,.18);transition:transform .14s cubic-bezier(.32,.72,0,1)}
+  .app:active .app-ico{transform:scale(.88)}
+  .app-name{font-size:10.5px;color:var(--fg);letter-spacing:.1px;white-space:nowrap;width:100%;overflow:hidden;text-overflow:ellipsis;text-align:center}
+  .home-glass .app-name{color:#1d1d1f}
+  .home-dots{position:relative;z-index:2;display:flex;gap:7px;justify-content:center;padding:14px 0 2px}
+  .home-dots span{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.16);box-shadow:inset 0 1px 1px rgba(0,0,0,.12)}
+  .home-dots span.on{background:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.28)}
+  .home-dock{position:relative;z-index:2;margin-top:20px;background:rgba(255,255,255,.45);backdrop-filter:blur(24px) saturate(180%) brightness(1.06);-webkit-backdrop-filter:blur(24px) saturate(180%) brightness(1.06);border:1px solid rgba(255,255,255,.65);border-radius:26px;padding:12px 16px 10px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;box-shadow:0 8px 24px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.85)}
+  .home-indicator{width:118px;height:5px;border-radius:3px;background:rgba(255,255,255,.9);margin:10px auto 2px}
+  .i-blue{background:linear-gradient(180deg,#5ac8fa,#0a72e8)}
+  .i-red{background:linear-gradient(180deg,#ff7b6b,#d92d20)}
+  .i-yellow{background:linear-gradient(180deg,#ffd84d,#ee9c07)}
+  .i-teal{background:linear-gradient(180deg,#5fe3d6,#0aa79f)}
+  .i-green{background:linear-gradient(180deg,#6fe3a0,#0e9a54)}
+  .i-indigo{background:linear-gradient(180deg,#9b8bff,#4f2fe8)}
+  .i-gold{background:linear-gradient(180deg,#ffdf8a,#d99a06)}
+  .i-dark{background:linear-gradient(180deg,#4b4b50,#1d1d1f)}
+  .i-pink{background:linear-gradient(180deg,#ff8ac4,#d81b7d)}
+  .i-purple{background:linear-gradient(180deg,#c89bff,#7a2ce0)}
+  @media(max-width:480px){.home-phone{width:min(320px,94vw)}.app-ico{width:50px;height:50px;font-size:24px}.app-name{font-size:10px}}
+
+  /* ===== Liquid glass system ===== */
+  .lg{
+    position:relative;
+    background:rgba(255,255,255,.55);
+    backdrop-filter:blur(30px) saturate(190%) brightness(1.06);
+    -webkit-backdrop-filter:blur(30px) saturate(190%) brightness(1.06);
+    border:1px solid rgba(255,255,255,.6);
+    box-shadow:0 10px 34px rgba(0,0,0,.10),0 1px 2px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.85),inset 0 -1px 0 rgba(255,255,255,.35);
+  }
+  .lg::after{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:linear-gradient(115deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,0) 26%,rgba(255,255,255,0) 62%,rgba(255,255,255,.45) 100%);
+    mix-blend-mode:overlay;opacity:.9;
+  }
+  .lg-sheen{position:absolute;inset:0;border-radius:inherit;pointer-events:none;overflow:hidden}
+  .lg-sheen::before{
+    content:"";position:absolute;top:-60%;left:-40%;width:40%;height:220%;
+    background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.65),rgba(255,255,255,0));
+    transform:rotate(18deg);filter:blur(6px);
+    animation:lgSheen 7s ease-in-out infinite;
+  }
+  @keyframes lgSheen{0%{left:-45%}55%{left:115%}100%{left:115%}}
+
+  /* ===== Device lineup (Apple-style studio shot) ===== */
+  .devices{display:flex;align-items:flex-end;justify-content:center;gap:clamp(10px,2.2vw,26px);flex-wrap:wrap;padding:10px 0 4px;perspective:1600px}
+  .device{transform-style:preserve-3d}
+  .device:nth-child(1) .device-body{transform:rotateY(16deg) rotateX(3deg)}
+  .device:nth-child(2) .device-body{transform:rotateY(10deg)}
+  .device:nth-child(3) .device-body{transform:rotateY(-4deg) scale(1.06)}
+  .device:nth-child(4) .device-body{transform:rotateY(-8deg)}
+  .device:nth-child(5) .device-body{transform:rotateY(-16deg) rotateX(3deg)}
+  .device{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+  .device-body{position:relative;filter:drop-shadow(0 18px 26px rgba(0,0,0,.16))}
+  .device-stand{
+    position:relative;
+    width:clamp(54px,6.8vw,88px);height:clamp(28px,3.4vw,44px);margin-top:-1px;
+    border-radius:8px 8px 12px 12px;
+    background:
+      radial-gradient(circle at 2px 2px,rgba(0,0,0,.30) .9px,transparent 1.1px) 0 0/4px 4px,
+      linear-gradient(180deg,#f0f0f4,#cfcfd6 55%,#b9b9c2);
+    box-shadow:0 10px 16px rgba(0,0,0,.18);
+  }
+  .device-stand::before{
+    content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:100%;
+    width:104%;height:16px;border-radius:50%;
+    background:radial-gradient(ellipse at 50% 60%,rgba(0,0,0,.22),transparent 70%);
+  }
+
+  /* Apple Watch */
+  .dev-watch{width:clamp(58px,7vw,86px);height:clamp(72px,8.6vw,106px);border-radius:clamp(16px,2.1vw,26px);background:linear-gradient(160deg,#e8e8ec,#a9a9b2 45%,#d5d5db);padding:4px}
+  .dev-watch .scr{width:100%;height:100%;border-radius:clamp(13px,1.7vw,22px);background:#000;overflow:hidden;position:relative;padding:8px 7px;color:#fff;font-family:-apple-system,sans-serif}
+  .dev-watch .scr .wk-day{color:#ffd60a;font-size:9px;font-weight:600}
+  .dev-watch .scr .wk-time{font-size:30px;font-weight:300;line-height:.95;letter-spacing:-1px}
+  .dev-watch .scr .wk-sub{font-size:8px;color:#fff;opacity:.9}
+  .dev-watch .scr .wk-temp{position:absolute;right:8px;bottom:26px;font-size:15px;font-weight:600}
+  .dev-watch .scr .wk-sun{position:absolute;left:8px;bottom:8px;font-size:8px;color:#ffd60a}
+  .dev-watch .scr .wk-crown{position:absolute;right:-3px;top:26px;width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,#d6d6dc,#9c9ca4)}
+
+  /* iPad */
+  .dev-ipad{width:clamp(96px,11.6vw,142px);height:clamp(126px,15.2vw,186px);border-radius:clamp(12px,1.5vw,18px);background:linear-gradient(160deg,#f2f2f5,#d3d3da 60%,#ececf0);padding:5px}
+  .dev-ipad .scr{width:100%;height:100%;border-radius:clamp(9px,1.1vw,14px);overflow:hidden;background:linear-gradient(160deg,#2a3550,#1a1f33);position:relative}
+  .dev-ipad .scr .ip-face{position:absolute;inset:0;background:radial-gradient(60% 60% at 40% 30%,rgba(255,220,190,.42),transparent 70%),radial-gradient(50% 50% at 75% 70%,rgba(120,180,255,.34),transparent 70%)}
+  .dev-ipad .scr .ip-person{position:absolute;left:50%;bottom:20%;transform:translateX(-50%);width:28%;height:42%;border-radius:36% 36% 18% 18%;background:linear-gradient(180deg,#f4cdb0,#cf9579 60%,#a86a52);z-index:1;box-shadow:0 10px 20px rgba(0,0,0,.32)}
+  .dev-ipad .scr .ip-person::before{content:"";position:absolute;left:50%;top:-42%;transform:translateX(-50%);width:56%;height:44%;border-radius:48% 48% 44% 44%;background:linear-gradient(180deg,#f6d3bb,#d8a184);box-shadow:0 4px 10px rgba(0,0,0,.28)}
+  .dev-ipad .scr .ip-person::after{content:"";position:absolute;left:50%;top:-50%;transform:translateX(-50%);width:80%;height:42%;border-radius:50% 50% 42% 42%;background:radial-gradient(60% 60% at 32% 38%,#4e3527 0%,#332016 58%,#1f120c 100%);box-shadow:0 6px 14px rgba(0,0,0,.32)}
+  .dev-ipad .scr .ip-bar{position:absolute;left:0;right:0;bottom:0;height:20%;background:rgba(255,255,255,.26);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:space-evenly;z-index:2}
+  .dev-ipad .scr .ip-bar i{width:clamp(15px,1.7vw,22px);height:clamp(15px,1.7vw,22px);border-radius:50%;display:block;box-shadow:0 2px 6px rgba(0,0,0,.34)}
+  .dev-ipad .scr .ip-bar i.x{background:#ff3b30}
+  .dev-ipad .scr .ip-bar i.m{background:#34c759}
+  .dev-ipad .scr .ip-bar i.mic{background:#fff}
+
+
+  /* Vision Pro */
+  .dev-vp{width:clamp(118px,14.4vw,178px);height:clamp(118px,14.4vw,178px);border-radius:clamp(26px,3.2vw,40px);background:linear-gradient(155deg,#fbfbfd,#d7d7de 42%,#f4f4f7);padding:6px}
+  .dev-vp .scr{width:100%;height:100%;border-radius:clamp(21px,2.6vw,33px);overflow:hidden;background:linear-gradient(160deg,#8fae9e,#5c7a6d 60%,#41564d);position:relative}
+  .dev-vp .scr .vp-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(30px,4vw,54px);font-weight:800;color:rgba(255,255,255,.20);letter-spacing:-2px;z-index:0}
+  .dev-vp .scr{background:radial-gradient(70% 60% at 50% 22%,rgba(226,244,232,.95),rgba(150,196,176,.92) 55%,rgba(96,140,124,.95))}
+  .dev-vp .scr .vp-person{position:absolute;left:50%;bottom:10%;transform:translateX(-50%);width:30%;height:44%;border-radius:36% 36% 18% 18%;background:linear-gradient(180deg,#f0a8bd,#e0688c 55%,#c94f74);z-index:1;box-shadow:0 10px 20px rgba(0,0,0,.28)}
+  .dev-vp .scr .vp-person::before{content:"";position:absolute;left:50%;top:-42%;transform:translateX(-50%);width:58%;height:44%;border-radius:48% 48% 44% 44%;background:linear-gradient(180deg,#f6d3bb,#d8a184)}
+  .dev-vp .scr .vp-person::after{content:"";position:absolute;left:50%;top:-52%;transform:translateX(-50%);width:78%;height:44%;border-radius:50% 50% 42% 42%;background:radial-gradient(60% 60% at 30% 40%,#5a4034 0%,#3a251c 55%,#241710 100%);box-shadow:0 6px 14px rgba(0,0,0,.3)}
+  .dev-vp .scr .vp-person::before{content:"";position:absolute;left:50%;top:-22%;transform:translateX(-50%);width:62%;height:44%;border-radius:50%;background:linear-gradient(180deg,#e8b899,#cf9673)}
+
+  /* HomePod with display */
+  .dev-hp{width:clamp(102px,12.4vw,152px);height:clamp(102px,12.4vw,152px);border-radius:clamp(28px,3.4vw,42px);background:linear-gradient(155deg,#fbfbfd,#dcdce2 50%,#f2f2f5);padding:5px}
+  .dev-hp .scr{width:100%;height:100%;border-radius:clamp(24px,3vw,37px);overflow:hidden;background:linear-gradient(160deg,#f6a63c,#e2762a 55%,#c85f1f);position:relative;color:#fff;padding:10px}
+  .dev-hp .scr .hp-temp{font-size:clamp(24px,3vw,38px);font-weight:300;line-height:1}
+  .dev-hp .scr .hp-lbl{font-size:8px;opacity:.9}
+  .dev-hp .scr .hp-widgets{position:absolute;left:8px;right:8px;bottom:8px;display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  .dev-hp .scr .hp-w{background:rgba(255,255,255,.22);border-radius:6px;padding:4px 5px;font-size:7px;line-height:1.25}
+  .dev-hp .scr .hp-clock{position:absolute;right:9px;top:9px;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7)}
+
+  /* iPhone */
+  .dev-iph{width:clamp(62px,7.6vw,96px);height:clamp(120px,14.6vw,182px);border-radius:clamp(16px,2vw,25px);background:linear-gradient(150deg,#f4f4f7,#c9c9d0 55%,#ececf0);padding:4px}
+  .dev-iph .scr{width:100%;height:100%;border-radius:clamp(13px,1.6vw,21px);overflow:hidden;background:linear-gradient(170deg,#0e1a2b,#05080f);position:relative;display:flex;align-items:center;justify-content:center}
+  .dev-iph .scr .ip-sky{position:absolute;inset:0;background:radial-gradient(70% 50% at 50% 30%,rgba(90,150,220,.55),transparent 70%)}
+  .dev-iph .scr .ip-person{position:absolute;left:50%;bottom:22%;transform:translateX(-50%);width:22%;height:36%;border-radius:38% 38% 14% 14%;background:linear-gradient(180deg,#e0603f,#b23c26)}
+  .dev-iph .scr .ip-person::before{content:"";position:absolute;left:50%;top:-48%;transform:translateX(-50%);width:64%;height:46%;border-radius:50% 50% 46% 46%;background:linear-gradient(180deg,#cf4c2b,#9c3320)}
+  .dev-iph .scr .ip-person::after{content:"";position:absolute;left:50%;top:-54%;transform:translateX(-50%);width:80%;height:40%;border-radius:50% 50% 42% 42%;background:radial-gradient(60% 60% at 34% 36%,#4a3026 0%,#2e1d15 58%,#1c110c 100%)}
+  .dev-iph .scr .ip-bar{position:absolute;left:6px;right:6px;bottom:6px;height:16px;border-radius:5px;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;gap:5px}
+  .dev-iph .scr .ip-bar i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.85);display:block}
+  .dev-iph .scr .ip-title{position:absolute;left:0;right:0;bottom:30%;text-align:center;font-size:7px;color:#fff;letter-spacing:.4px}
+
+  /* App icons */
+  .app-ico{position:relative;overflow:hidden}
+  .app-ico::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,rgba(255,255,255,.42),rgba(255,255,255,0) 55%);pointer-events:none}
+  .a-msg{background:linear-gradient(180deg,#6ef07a,#12c830)}
+  .a-mail{background:linear-gradient(180deg,#4bb8ff,#0a72e8)}
+  .a-map{background:linear-gradient(180deg,#7ee08a,#2aa84a)}
+  .a-photo{background:linear-gradient(180deg,#fff,#eee);background-image:conic-gradient(#ff5f6d,#ffc371,#7ee8fa,#a78bfa,#ff5f6d)}
+  .a-cam{background:linear-gradient(180deg,#d8d8de,#8e8e99)}
+  .a-weather{background:linear-gradient(180deg,#59c5ff,#0a7ce0)}
+  .a-clock{background:linear-gradient(180deg,#4a4a52,#0f0f14)}
+  .a-music{background:linear-gradient(180deg,#ff5f7e,#fa233b)}
+  .a-notes{background:linear-gradient(180deg,#fff5c2,#ffd60a)}
+  .a-rem{background:linear-gradient(180deg,#ffffff,#e8e8ee)}
+  .a-cal{background:linear-gradient(180deg,#ffffff,#f0f0f4)}
+  .a-stock{background:linear-gradient(180deg,#3a3a44,#111116)}
+  .a-wallet{background:linear-gradient(180deg,#f6f6f8,#d9d9df)}
+  .a-health{background:linear-gradient(180deg,#ffffff,#ececf2)}
+  .a-home{background:linear-gradient(180deg,#ffd27a,#ff9f0a)}
+  .a-tv{background:linear-gradient(180deg,#3d3d47,#0d0d12)}
+  .a-fit{background:linear-gradient(180deg,#3a3a44,#111116)}
+  .a-pod{background:linear-gradient(180deg,#c79bff,#7a2ce0)}
+  .a-books{background:linear-gradient(180deg,#ffd66a,#f08a00)}
+  .a-set{background:linear-gradient(180deg,#9a9aa4,#4a4a54)}
+  .a-files{background:linear-gradient(180deg,#7fc8ff,#0a72e8)}
+  .a-calc{background:linear-gradient(180deg,#5a5a64,#1b1b22)}
+  .a-safari{background:linear-gradient(180deg,#f2f2f6,#d6d6de)}
+  .a-store{background:linear-gradient(180deg,#5ac8fa,#0a72e8)}
+  .a-wallet2{background:linear-gradient(180deg,#ffffff,#e6e6ec)}
+  .app-ico.em{background:none!important;box-shadow:none}
+  .app-ico.em::after{display:none}
+
+
+  /* Device lineup — small screens */
+  @media(max-width:900px){
+    .devices{gap:10px;flex-wrap:nowrap}
+    .dev-watch{width:56px;height:70px}
+    .dev-ipad{width:88px;height:114px}
+    .dev-vp{width:104px;height:104px}
+    .dev-hp{width:92px;height:92px}
+    .dev-iph{width:58px;height:112px}
+    .device-stand{width:58px;height:32px}
+    .dev-watch .scr .wk-time{font-size:24px}
+    .dev-hp .scr .hp-temp{font-size:26px}
+    .dev-iph .scr .ip-title{display:none}
+  }
+  @media(max-width:620px){
+    .devices{gap:5px;flex-wrap:nowrap;transform:scale(.78);transform-origin:center bottom;margin:0 -10px}
+    .dev-watch{width:46px;height:58px;border-radius:13px}
+    .dev-ipad{width:72px;height:94px}
+    .dev-vp{width:84px;height:84px}
+    .dev-hp{width:74px;height:74px}
+    .dev-iph{width:48px;height:94px}
+    .device-stand{width:48px;height:26px}
+    .dev-watch .scr .wk-time{font-size:19px}
+    .dev-watch .scr .wk-day{font-size:7px}
+    .dev-watch .scr .wk-sub{font-size:6px}
+    .dev-hp .scr .hp-temp{font-size:20px}
+    .dev-hp .scr .hp-lbl{font-size:6px}
+    .dev-hp .scr .hp-w{font-size:5.5px;padding:3px 4px}
+    .dev-hp .scr .hp-clock{width:18px;height:18px}
+  }
+  @media(max-width:430px){
+    .devices{transform:scale(.66)}
+  }
 
 </style>
 </head>
@@ -198,19 +497,51 @@
   <h1>Hello, hello.</h1>
   <p class="lede">Pre-order starting 5:00 a.m. PT on 10.16.<br>Available starting 10.23.</p>
   <div class="ctas">
-    <a class="btn primary" href="#products">Learn more</a>
-    <a class="btn ghost" href="#products">Buy</a>
+    <a class="btn primary" href="https://www.youtube.com/watch?v=ufLmAvDUO24" target="_blank" rel="noopener">Watch the event</a>
+    <a class="btn ghost" href="https://www.youtube.com/@Apple" target="_blank" rel="noopener">All Apple events ›</a>
+  </div>
+  <div class="hero-watch-row">
+    <a class="watch-pill" href="https://www.youtube.com/watch?v=ufLmAvDUO24" target="_blank" rel="noopener">
+      <span class="watch-emoji">📱</span>
+      <span class="watch-label">iPhone Duo · Sep 2026</span>
+      <span class="watch-arrow">Watch ›</span>
+    </a>
+    <a class="watch-pill" href="https://www.youtube.com/watch?v=QE4ogX6oWgI" target="_blank" rel="noopener">
+      <span class="watch-emoji">🧠</span>
+      <span class="watch-label">WWDC 2026 · Apple Intelligence</span>
+      <span class="watch-arrow">Watch ›</span>
+    </a>
+    <a class="watch-pill" href="https://www.youtube.com/watch?v=IT4TpCGuY8w" target="_blank" rel="noopener">
+      <span class="watch-emoji">🖥</span>
+      <span class="watch-label">Mac Studio & MacBook Neo</span>
+      <span class="watch-arrow">Watch ›</span>
+    </a>
   </div>
   <div class="price-pill">
     From $1999 or $83.29/mo. for 24 mo.ᵃ
-    <a class="btn" href="#">View pricing</a>
+    <a class="btn" href="https://www.youtube.com/watch?v=ufLmAvDUO24" target="_blank" rel="noopener">View pricing</a>
   </div>
 </section>
 
-<section id="products"><div class="wrap"><div class="section-head"><h2>The Lineup</h2><p class="sub">A few things Apple makes.</p></div>
+<div class="glass-bar-wrap">
+  <nav class="glass-bar" id="glassBar">
+    <button class="glass-pill" data-target="home-view"><span class="g-icon">🏠</span><span class="g-label">Home</span></button>
+    <button class="glass-pill active" data-target="products"><span class="g-icon">🎧</span><span class="g-label">Products</span></button>
+    <button class="glass-pill" data-target="events"><span class="g-icon">📅</span><span class="g-label">Apple Events</span></button>
+    <button class="glass-pill" data-target="facts"><span class="g-icon">💡</span><span class="g-label">Did You Know?</span></button>
+    <button class="glass-pill" data-target="history"><span class="g-icon">📜</span><span class="g-label">History</span></button>
+    <button class="glass-pill" data-target="park"><span class="g-icon">🏛️</span><span class="g-label">Apple Park</span></button>
+    <button class="glass-pill" data-target="premium"><span class="g-icon">⭐</span><span class="g-label">Premium</span></button>
+  </nav>
+</div>
+
+<section id="products">
   <div class="wrap">
-    <h2>Products</h2>
-    <p class="sub">A few things Apple makes.</p>
+    <div class="section-head">
+      <p class="eyebrow" style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:6px">The Lineup</p>
+      <h2>Products</h2>
+      <p class="sub">A few things Apple makes.</p>
+    </div>
     <div class="grid-2">
       <div class="tile" data-modal='{"title":"AirPods & Headphones","tag":"Audio","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple wireless audio lineup.","tips":["Adaptive Audio blends ANC + Transparency automatically.","Personalized Spatial Audio scans your ears via TrueDepth.","Charge AirPods Pro 2 with any Apple Watch charger.","Use Find My to ping the case or see last location.","AirPods Max supports lossless over USB-C."],"facts":["AirPods launched December 2016 with iPhone 7.","AirPods Pro 2 doubled ANC with the H2 chip.","AirPods Max designed entirely in-house."]}'>
         <span class="icon">🎧</span>
@@ -260,9 +591,148 @@
 
   </section>
 
+<section id="home-view">
+  <div class="section-head">
+    <h2>Home View</h2>
+    <p class="sub">One ecosystem. Five devices. Every app you need.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="home-stage lg">
+      <div class="lg-sheen"></div>
+      <div class="stage-head">
+        <h3>The lineup, in glass.</h3>
+        <p>Watch · iPad · Vision Pro · HomePod · iPhone</p>
+      </div>
+    <div class="devices">
+      <div class="device">
+        <div class="device-body dev-watch">
+          <div class="scr">
+            <div class="wk-day">Wed 24</div>
+            <div class="wk-time">9:41</div>
+            <div class="wk-sub">Cupertino</div>
+            <div class="wk-temp">54°</div>
+            <div class="wk-sun">☀️</div>
+            <span class="wk-crown"></span>
+          </div>
+        </div>
+        <div class="device-stand"></div>
+      </div>
+
+      <div class="device">
+        <div class="device-body dev-ipad">
+          <div class="scr">
+            <span class="ip-face"></span>
+            <span class="ip-person"></span>
+            <div class="ip-bar">
+              <i class="m"></i><i class="mic"></i><i></i><i class="x"></i>
+            </div>
+          </div>
+        </div>
+        <div class="device-stand"></div>
+      </div>
+
+      <div class="device">
+        <div class="device-body dev-vp">
+          <div class="scr">
+            <span class="vp-person"></span>
+          </div>
+        </div>
+        <div class="device-stand"></div>
+      </div>
+
+      <div class="device">
+        <div class="device-body dev-hp">
+          <div class="scr">
+            <span class="hp-clock"></span>
+            <div class="hp-temp">68</div>
+            <div class="hp-lbl">Thermostat</div>
+            <div class="hp-widgets">
+              <div class="hp-w">☀️ Good Morning</div>
+              <div class="hp-w">🔒 Door Lock</div>
+              <div class="hp-w">💡 Lights</div>
+              <div class="hp-w">🔔 Alerts</div>
+            </div>
+          </div>
+        </div>
+        <div class="device-stand"></div>
+      </div>
+
+      <div class="device">
+        <div class="device-body dev-iph">
+          <div class="scr">
+            <span class="ip-sky"></span>
+            <span class="ip-person"></span>
+            <div class="ip-title">FEEL DEEPLY</div>
+            <div class="ip-bar"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="device-stand"></div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="home-glass lg" style="margin-top:18px;border-radius:34px;padding:22px 20px 18px">
+      <div class="lg-sheen"></div>
+      <div class="home-dots" style="padding-top:0;margin-bottom:16px"><span class="on"></span><span></span><span></span></div>
+      <div class="app-grid">
+        <button class="app" data-target="products"><span class="app-ico a-msg">💬</span><span class="app-name">Messages</span></button>
+        <button class="app" data-target="events-feed"><span class="app-ico a-mail">✉️</span><span class="app-name">Mail</span></button>
+        <button class="app" data-target="park"><span class="app-ico a-map">🗺️</span><span class="app-name">Maps</span></button>
+        <button class="app" data-target="facts"><span class="app-ico a-photo">🌈</span><span class="app-name">Photos</span></button>
+        <button class="app" data-target="events"><span class="app-ico a-cam">📷</span><span class="app-name">Camera</span></button>
+        <button class="app" data-target="history"><span class="app-ico a-weather">⛅️</span><span class="app-name">Weather</span></button>
+        <button class="app" data-target="premium"><span class="app-ico a-clock">🕐</span><span class="app-name">Clock</span></button>
+        <button class="app" data-target="events-feed"><span class="app-ico a-music">🎵</span><span class="app-name">Music</span></button>
+        <button class="app" data-target="facts"><span class="app-ico a-notes">📝</span><span class="app-name">Notes</span></button>
+        <button class="app" data-target="premium"><span class="app-ico a-rem">✅</span><span class="app-name">Reminders</span></button>
+        <button class="app" data-target="events"><span class="app-ico a-cal">📆</span><span class="app-name">Calendar</span></button>
+        <button class="app" data-target="park"><span class="app-ico a-stock">📈</span><span class="app-name">Stocks</span></button>
+        <button class="app" data-target="premium"><span class="app-ico a-wallet">💳</span><span class="app-name">Wallet</span></button>
+        <button class="app" data-target="facts"><span class="app-ico a-health">❤️</span><span class="app-name">Health</span></button>
+        <button class="app" data-target="home-view"><span class="app-ico a-home">🏠</span><span class="app-name">Home</span></button>
+        <button class="app" data-target="events-feed"><span class="app-ico a-tv">📺</span><span class="app-name">TV</span></button>
+        <button class="app" data-target="premium"><span class="app-ico a-fit">🏃</span><span class="app-name">Fitness</span></button>
+        <button class="app" data-target="intelligence"><span class="app-ico a-pod">🎙️</span><span class="app-name">Podcasts</span></button>
+        <button class="app" data-target="facts"><span class="app-ico a-books">📚</span><span class="app-name">Books</span></button>
+        <button class="app" data-target="intelligence"><span class="app-ico a-set">⚙️</span><span class="app-name">Settings</span></button>
+        <button class="app" data-target="products"><span class="app-ico a-files">📁</span><span class="app-name">Files</span></button>
+        <button class="app" data-target="products"><span class="app-ico a-calc">🧮</span><span class="app-name">Calculator</span></button>
+        <button class="app" data-target="events"><span class="app-ico a-safari">🧭</span><span class="app-name">Safari</span></button>
+        <button class="app" data-target="products"><span class="app-ico a-store">🛍️</span><span class="app-name">Store</span></button>
+        <button class="app" data-target="history"><span class="app-ico a-wallet2">👛</span><span class="app-name">Wallet</span></button>
+        <button class="app" data-target="intelligence"><span class="app-ico a-msg">🧠</span><span class="app-name">Apple AI</span></button>
+        <button class="app" data-target="events"><span class="app-ico a-set">🕹️</span><span class="app-name">Arcade</span></button>
+        <button class="app" data-target="park"><span class="app-ico a-map">🚗</span><span class="app-name">CarPlay</span></button>
+        <button class="app" data-target="facts"><span class="app-ico a-cal">✏️</span><span class="app-name">Freeform</span></button>
+        <button class="app" data-target="intelligence"><span class="app-ico a-pod">✍️</span><span class="app-name">Journal</span></button>
+        <button class="app" data-target="history"><span class="app-ico a-books">🔦</span><span class="app-name">Shortcuts</span></button>
+        <button class="app" data-target="products"><span class="app-ico a-store">🧰</span><span class="app-name">Keynote</span></button>
+        <button class="app" data-target="products"><span class="app-ico a-files">📄</span><span class="app-name">Numbers</span></button>
+        <button class="app" data-target="products"><span class="app-ico a-calc">📊</span><span class="app-name">Pages</span></button>
+        <button class="app" data-target="events"><span class="app-ico a-music">🎙️</span><span class="app-name">Voice Memos</span></button>
+        <button class="app" data-target="premium"><span class="app-ico a-fit">🌍</span><span class="app-name">Find My</span></button>
+      </div>
+
+      <div class="home-dock">
+        <button class="app" data-target="home-view"><span class="app-ico a-store">🛍️</span><span class="app-name">Store</span></button>
+        <button class="app" data-target="events-feed"><span class="app-ico a-music">🎬</span><span class="app-name">Videos</span></button>
+        <button class="app" data-target="premium"><span class="app-ico a-gold">⭐</span><span class="app-name">Premium</span></button>
+        <button class="app" data-target="top"><span class="app-ico a-pod">🏠</span><span class="app-name">Home</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="events" data-locked>
   <div class="wrap">
-    <div class="section-head"><p class="eyebrow" style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:6px">Apple Event</p><h2>Apple Events</h2><p class="sub">What's currently featured on apple.com, plus what's coming next.</p>
+    <div class="section-head">
+      <p class="eyebrow" style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:6px">Apple Event</p>
+      <h2>Apple Events</h2>
+      <p class="sub">What's currently featured on apple.com, plus what's coming next.</p>
+    </div>
     <div class="grid-2">
       <div class="tile" data-modal='{"title":"iPhone 17 Pro","tag":"Smartphone","hero":"linear-gradient(135deg,#2c2c2e,#1d1d1f)","desc":"Apple current flagship headlining apple.com.","tips":["Use the 5x tetraprism telephoto for stage shots.","ProMotion display ramps from 1Hz to 120Hz.","Photographic Styles work in video too.","Pair with MagSafe Battery Pack for travel.","Use StandBy mode at night as a bedside clock."],"facts":["Built on the A19 Pro chip (3nm).","Titanium frame keeps weight under 200g.","Camera Control button is capacitive, not mechanical."]}'>
         <span class="badge">On apple.com</span>
@@ -360,8 +830,10 @@
 
 <section id="facts" data-locked>
   <div class="wrap">
-    <h2>Did You Know?</h2>
-    <p class="sub">A handful of Apple facts worth repeating.</p>
+    <div class="section-head">
+      <h2>Did You Know?</h2>
+      <p class="sub">A handful of Apple facts worth repeating.</p>
+    </div>
     <div class="facts-stack">
       <div class="fact-box"><strong>Apple is older than the personal computer industry.</strong><p>Founded April 1, 1976 — before the Apple II, before Microsoft moved to Albuquerque, before the word "PC" meant anything.</p></div>
       <div class="fact-box"><strong>Steve Wozniak designed the Apple I by hand.</strong><p>The whole machine was a single circuit board Woz handed out at the Homebrew Computer Club.</p></div>
@@ -373,10 +845,12 @@
   </div>
 </section>
 
-<section id="intelligence" data-locked><div class="wrap"><div class="section-head"><h2>Apple Intelligence</h2><p class="sub">The new era of AI on Apple devices.</p></div>
+<section id="intelligence" data-locked>
   <div class="wrap">
-    <h2>Apple Intelligence & New Siri</h2>
-    <p class="sub">What Apple unveiled at WWDC 2026, on-device and in the cloud.</p>
+    <div class="section-head">
+      <h2>Apple Intelligence</h2>
+      <p class="sub">The new era of AI on Apple devices.</p>
+    </div>
     <div class="grid-2">
       <div class="fact"><strong>On-device foundation models</strong><p>Apple's next-gen LLM runs locally on A19 Pro and M5-class chips. Summaries, Writing Tools, Image Playground, Genmoji — all without leaving your device.</p></div>
       <div class="fact"><strong>Private Cloud Compute</strong><p>Heavier requests route to a custom Apple Silicon server. Apple can't see your data — the architecture is publicly audited.</p></div>
@@ -476,8 +950,11 @@
 </section>
 
 <section id="park" data-locked>
-  <h2>Apple Park</h2>
-  <p class="sub">The spaceship campus in Cupertino. Opened 2017. Designed by Foster + Partners.</p>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Apple Park</h2>
+      <p class="sub">The spaceship campus in Cupertino. Opened 2017. Designed by Foster + Partners.</p>
+    </div>
 
   <div class="park-wrap">
     <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" aria-label="Top-down view of Apple Park">
@@ -551,6 +1028,7 @@
       <div class="stat"><span class="v">9,000</span><span class="k">Trees</span></div>
     </div>
   </div>
+  </div>
 </section>
 
 <section id="events-feed" data-locked>
@@ -594,6 +1072,157 @@
         <span class="feed-link">Watch on YouTube ›</span>
       </a>
     </div>
+  </div>
+</section>
+
+<section id="premium">
+  <div class="wrap premium-wrap">
+    <div class="premium-card" id="premiumCard">
+      <span class="badge live">Premium</span>
+      <h2>Think you know Apple?</h2>
+      <p class="premium-sub">5 hard Apple questions. Get them all right to unlock the Pro tier — including the secret Apple-1 prototype blueprint and a private fact dump.</p>
+      <button class="btn primary premium-start" id="premiumStart" type="button">Start the Quiz</button>
+      <div class="premium-progress" id="premiumProgress" hidden>
+        <span id="premiumScore">0 / 5</span>
+        <div class="premium-bar"><div class="premium-fill" id="premiumFill"></div></div>
+      </div>
+      <div class="premium-q" id="premiumQ" hidden>
+        <p class="premium-question" id="premiumQuestion"></p>
+        <div class="premium-options" id="premiumOptions"></div>
+        <p class="premium-feedback" id="premiumFeedback"></p>
+      </div>
+      <div class="premium-reward" id="premiumReward" hidden>
+        <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" fill="#34c759"/>
+          <path d="M18 33l10 10 18-22" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Pro Unlocked</h3>
+        <p>You answered all 5 correctly. Welcome to the inner circle.</p>
+        <div class="reward-grid">
+          <div class="reward-card"><h4>Apple-1 Blueprint</h4><p>Hand-drawn by Woz, 1976. Two-layer PCB, 60 Hz clock, 256-byte RAM boot ROM. Sold originally for $666.66.</p></div>
+          <div class="reward-card"><h4>The Newton Secret</h4><p>Apple's 1993 PDA prototype was codenamed "Project S." Only 4 engineers knew until 1992. Steve Jobs killed it the day he returned in 1997.</p></div>
+          <div class="reward-card"><h4>Ac-NeXT-quire</h4><p>When Apple bought NeXT in 1997 for $429M, the only thing Steve Jobs actually wanted was a single engineer: Avie Tevanian.</p></div>
+          <div class="reward-card"><h4>Typo of the Decade</h4><p>The first iPhone SDK was almost called "Purple." A team at Apple spent 4 months on it. Craig Federighi still calls it that internally.</p></div>
+          <div class="reward-card"><h4>The Lisa Tomb</h4><p>Apple's 1983 Lisa prototype used 3 floppy drives and cost $9,995. The unsold units were buried in a Utah landfill — except 2 prototypes that survived and are now at museums.</p></div>
+          <div class="reward-card"><h4>Return of the King</h4><p>The very first product Steve Jobs green-lit after returning to Apple in 1997 wasn't the iMac — it was a redesigned PowerBook G3 with translucent orange plastic.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Premium unlock banner -->
+<div class="pro-banner" id="proBanner" hidden>
+  <span class="pro-star">⭐</span>
+  <div class="pro-banner-text">
+    <strong>Premium Unlocked</strong>
+    <small>Spec-rich cards · early-access details · artist note</small>
+  </div>
+  <button class="pro-banner-close" id="proBannerClose" type="button" aria-label="Dismiss">×</button>
+</div>
+
+<section id="pro-specs" data-locked hidden>
+  <div class="wrap">
+    <div class="section-head"><h2>Premium · Early Access Specs</h2><p class="sub">Deeper technical details for each product, revealed only after the quiz.</p></div>
+    <div class="grid-2">
+      <div class="tile pro-tile">
+        <span class="badge pro-badge"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2l3 7h7l-5.5 4.5L20 21l-8-5-8 5 3.5-7.5L2 9h7z" fill="#FFD60A"/></svg> Premium</span>
+        <h3>iPhone Duo · deep dive</h3>
+        <ul class="pro-spec">
+          <li><b>Chip:</b> A19 Pro · 6-core CPU · 6-core GPU · 16-core Neural Engine</li>
+          <li><b>Memory:</b> 12 GB unified LPDDR5X</li>
+          <li><b>Inner display:</b> 8.3" LTPO OLED · 120 Hz ProMotion · 2200-nit HDR</li>
+          <li><b>Outer display:</b> 6.2" Super Retina XDR · Ceramic Shield 3</li>
+          <li><b>Battery:</b> 4700 mAh · 33 hr video · 22 hr streaming · 50% in 30 min</li>
+          <li><b>Charging:</b> USB-C · MagSafe 25W · Qi2 25W</li>
+          <li><b>Camera:</b> 48 MP Fusion · 5× tetraprism telephoto · 12 MP UW</li>
+          <li><b>Durability:</b> titanium hinge rated 200,000 folds · IP68</li>
+          <li><b>Weight:</b> 200 g · 5.4 mm unfolded</li>
+          <li><b>Connectivity:</b> Wi-Fi 7 · Bluetooth 6 · Thread · UWB Gen 2</li>
+        </ul>
+      </div>
+      <div class="tile pro-tile">
+        <span class="badge pro-badge"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2l3 7h7l-5.5 4.5L20 21l-8-5-8 5 3.5-7.5L2 9h7z" fill="#FFD60A"/></svg> Premium</span>
+        <h3>MacBook Pro · deep dive</h3>
+        <ul class="pro-spec">
+          <li><b>Chip:</b> M5 Pro / M5 Max · 14- or 16-core CPU · up to 40-core GPU</li>
+          <li><b>Memory:</b> 24-128 GB unified LPDDR5X · 800 GB/s bandwidth</li>
+          <li><b>Display:</b> 14.2" or 16.2" Liquid Retina XDR · 120 Hz · 1600-nit HDR</li>
+          <li><b>Battery:</b> up to 24 hr video · 100W USB-C fast charge</li>
+          <li><b>Storage:</b> 512 GB - 8 TB SSD · 5,400 MB/s</li>
+          <li><b>Ports:</b> 3× Thunderbolt 5 · HDMI 2.1 · SDXC · MagSafe 3 · headphone jack</li>
+          <li><b>Connectivity:</b> Wi-Fi 7 · Bluetooth 6 · Thread</li>
+          <li><b>Camera:</b> 12 MP Center Stage · Studio-quality 3-mic array</li>
+          <li><b>Build:</b> 100% recycled aluminum · MIL-STD-810H drop test</li>
+          <li><b>Weight:</b> 1.55 kg (14") / 2.14 kg (16")</li>
+        </ul>
+      </div>
+      <div class="tile pro-tile">
+        <span class="badge pro-badge"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2l3 7h7l-5.5 4.5L20 21l-8-5-8 5 3.5-7.5L2 9h7z" fill="#FFD60A"/></svg> Premium</span>
+        <h3>iPad Pro · deep dive</h3>
+        <ul class="pro-spec">
+          <li><b>Chip:</b> M5 · 9- or 10-core CPU · 10-core GPU · Neural Accelerator</li>
+          <li><b>Memory:</b> 16-32 GB unified LPDDR5X · 200 GB/s</li>
+          <li><b>Display:</b> 11" or 13" Tandem OLED Ultra Retina XDR · 120 Hz · 1600-nit HDR</li>
+          <li><b>Battery:</b> 10 hr web · 38W fast charge via USB-C</li>
+          <li><b>Storage:</b> 256 GB - 4 TB · 14 Gbps USB 4</li>
+          <li><b>Apple Pencil Pro:</b> barrel roll · squeeze · haptic · hover</li>
+          <li><b>Camera:</b> 12 MP Wide · LiDAR · 4K ProRes HDR</li>
+          <li><b>Connectivity:</b> Wi-Fi 7 · 5G · Thunderbolt 4 · UWB 2</li>
+          <li><b>Software:</b> Stage Manager · Final Cut Pro · Logic Pro · Octane X</li>
+          <li><b>Thinnest Apple product ever:</b> 5.1 mm</li>
+        </ul>
+      </div>
+      <div class="tile pro-tile">
+        <span class="badge pro-badge"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2l3 7h7l-5.5 4.5L20 21l-8-5-8 5 3.5-7.5L2 9h7z" fill="#FFD60A"/></svg> Premium</span>
+          <h3>Apple Watch Ultra 4 · deep dive</h3>
+        <ul class="pro-spec">
+          <li><b>Case:</b> 49 mm grade-5 titanium · raised edges · 11.8 mm thin</li>
+          <li><b>Display:</b> Always-On LTPO3 OLED · 3000 nits · 1 Hz - 120 Hz</li>
+          <li><b>Chip:</b> S10 SiP · 4-core Neural Engine</li>
+          <li><b>Battery:</b> 36 hr normal · 72 hr Low Power Mode · 12 hr workout with GPS</li>
+          <li><b>Charging:</b> USB-C fast charge · 0-80% in 45 min</li>
+          <li><b>GPS:</b> dual-frequency L1+L5 · precision dual-band</li>
+          <li><b>Dive:</b> EN13319 certified to 40 m · depth gauge · water temp</li>
+          <li><b>Action button:</b> customizable · triggers workout / waypoint / dive</li>
+          <li><b>Siren:</b> 86 dB at 1 m · dual-mic array</li>
+          <li><b>Health:</b> ECG · blood oxygen · sleep apnea detection · temperature</li>
+        </ul>
+      </div>
+      <div class="tile pro-tile">
+        <span class="badge pro-badge"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2l3 7h7l-5.5 4.5L20 21l-8-5-8 5 3.5-7.5L2 9h7z" fill="#FFD60A"/></svg> Premium</span>
+        <h3>AirPods Pro 3 · deep dive</h3>
+        <ul class="pro-spec">
+          <li><b>Chip:</b> Apple H3 · 2× faster ANC vs H1</li>
+          <li><b>Audio:</b> Adaptive Audio 2.0 · Personalized Spatial Audio · Dolby Atmos</li>
+          <li><b>ANC:</b> 2× quieter than AirPods Pro 2 · Transparency mode</li>
+          <li><b>Battery:</b> 8 hr ANC · 30 hr with case</li>
+          <li><b>Charging:</b> USB-C · MagSafe · Qi2 · Apple Watch charger</li>
+          <li><b>Hearing:</b> clinical-grade hearing aid · hearing protection</li>
+          <li><b>Live Translation:</b> real-time earbud translation · 11 languages</li>
+          <li><b>Durability:</b> IP57 sweat & water resistant</li>
+          <li><b>Find My:</b> precision finding via UWB Gen 2</li>
+          <li><b>Connectivity:</b> Bluetooth 6 · LE Audio · Auracast · Thread</li>
+        </ul>
+      </div>
+      <div class="tile pro-tile">
+        <span class="badge pro-badge"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2l3 7h7l-5.5 4.5L20 21l-8-5-8 5 3.5-7.5L2 9h7z" fill="#FFD60A"/></svg> Premium</span>
+        <h3>Mac Studio · deep dive</h3>
+        <ul class="pro-spec">
+          <li><b>Chip:</b> M5 Ultra · 32-core CPU · 80-core GPU · 6× faster Neural Engine</li>
+          <li><b>Memory:</b> 96-192 GB unified · 1.2 TB/s bandwidth</li>
+          <li><b>Storage:</b> 1 TB - 16 TB SSD · RAID 0 + 1</li>
+          <li><b>Ports:</b> 6× Thunderbolt 5 · 2× USB-A · HDMI 2.1 · SDXC · 10 GbE</li>
+          <li><b>Displays:</b> drives 4× Pro Display XDR @ 6K · 1× 4K over HDMI</li>
+          <li><b>Networking:</b> Wi-Fi 7 · Bluetooth 6 · 10 Gb Ethernet · Thread</li>
+          <li><b>Cooling:</b> dual-fan thermal array · whisper quiet under load</li>
+          <li><b>Audio:</b> HDMI multichannel · Studio-quality mics</li>
+          <li><b>Use:</b> Final Cut Pro · Logic Pro · Xcode · Blender · Octane</li>
+          <li><b>Power:</b> Carbon-neutral · recycled aluminum · 2-year AppleCare+ included</li>
+        </ul>
+      </div>
+    </div>
+    <p class="artist-note">— Pro tier unlocked by Albert C. Apple Park Artist-in-Residence, 2024 cohort</p>
   </div>
 </section>
 
@@ -704,7 +1333,196 @@
 </div>
 
 <script>
-  // Force any <video autoplay muted> to actually play after first user interaction
+  document.getElementById('proBannerClose')?.addEventListener('click', () => {
+      document.getElementById('proBanner').style.display = 'none';
+    });
+  (function(){
+    const bar = document.getElementById('glassBar');
+    if (!bar) return;
+    bar.addEventListener('click', e => {
+      const btn = e.target.closest('.glass-pill');
+      if (!btn) return;
+      bar.querySelectorAll('.glass-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const id = btn.dataset.target;
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  })();
+  // Home View — app launcher
+  (function(){
+    const phone = document.querySelector('.home-phone');
+    if (!phone) return;
+    phone.addEventListener('click', e => {
+      const btn = e.target.closest('.app');
+      if (!btn) return;
+      const id = btn.dataset.target;
+      if (id === 'top'){ window.scrollTo({ top:0, behavior:'smooth' }); return; }
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.add('show');
+      el.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  })();
+  document.addEventListener('click touchstart keydown', function forcePlay(){
+    document.querySelectorAll('video[autoplay]').forEach(v => { v.muted = true; v.play().catch(()=>{}); });
+  }, { once:false, capture:true });
+
+  // Premium Apple trivia quiz
+  (function(){
+    const startBtn = document.getElementById('premiumStart');
+    const qBox = document.getElementById('premiumQ');
+    const qEl = document.getElementById('premiumQuestion');
+    const optsEl = document.getElementById('premiumOptions');
+    const fbEl = document.getElementById('premiumFeedback');
+    const progress = document.getElementById('premiumProgress');
+    const score = document.getElementById('premiumScore');
+    const fill = document.getElementById('premiumFill');
+    const reward = document.getElementById('premiumReward');
+    if (!startBtn) return;
+
+    const QUIZ_POOL = [
+      { q:'Which chip powered the original 2007 iPhone?', opts:['A4','Samsung S3C6400','ARM11','Intel XScale'], a:1 },
+      { q:'What was Steve Jobs annual salary when he returned to Apple in 1997?', opts:['$1','$100,000','$1,000,000','He took no salary'], a:0 },
+      { q:'Which Apple product had the codename "Project S"?', opts:['Newton','Lisa','iPod','Pippin'], a:0 },
+      { q:'How much did Apple originally pay for NeXT in 1997?', opts:['$429 million','$250 million','$1.2 billion','$612 million'], a:0 },
+      { q:'Who designed the original Apple logo (the rainbow one)?', opts:['Steve Jobs','Rob Janoff','Susan Kare','Jonathan Ive'], a:1 },
+      { q:'In what year did Apple first reach $1 trillion in market cap?', opts:['2017','2018','2019','2020'], a:1 },
+      { q:'What was Apple\'s first touchscreen product?', opts:['iPhone','iPod touch','Newton MessagePad','iPad'], a:2 },
+      { q:'Which component costs Apple the most in the iPhone 15 Pro?', opts:['A17 Pro chip','Camera system','Display','Titanium frame'], a:1 },
+      { q:'What was the first Apple product to use the Lightning connector?', opts:['iPhone 5','iPhone 6','iPad 4','iPod touch 5'], a:0 },
+      { q:'Which year did the iPhone first ship with a 64-bit processor?', opts:['2012','2013','2014','2015'], a:1 },
+    ];
+    function shuffle(arr){
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+    let QUIZ = shuffle(QUIZ_POOL).slice(0, 5);
+
+    let i = 0, errors = 0;
+    const wrongTimes = {}; // questionIdx -> count
+    let recentWrongs = 0;
+    let lastWrongAt = 0;
+    let lockedUntil = 0;
+    let strikes = 0; // repeated guesses across the whole session
+
+    function reset(){
+      i = 0; errors = 0;
+      for (const k in wrongTimes) delete wrongTimes[k];
+      recentWrongs = 0;
+      fill.style.width = '0%';
+      score.textContent = '0 / 5';
+      startBtn.hidden = false;
+      progress.hidden = true;
+      qBox.hidden = true;
+      reward.hidden = true;
+      // reshuffle so the next attempt isn't the same set
+      QUIZ = shuffle(QUIZ_POOL).slice(0, 5);
+    }
+
+    function render(){
+      const item = QUIZ[i];
+      qEl.textContent = (i+1) + '. ' + item.q;
+      optsEl.innerHTML = '';
+      fbEl.textContent = '';
+      fbEl.className = 'premium-feedback';
+      item.opts.forEach((opt, idx) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = opt;
+        b.addEventListener('click', () => answer(idx, b), { once:true });
+        optsEl.appendChild(b);
+      });
+    }
+
+    function answer(idx, btn){
+      if (Date.now() < lockedUntil){
+        fbEl.textContent = '⏸ Locked — wait.';
+        fbEl.classList.add('bad');
+        return;
+      }
+      const item = QUIZ[i];
+      const buttons = optsEl.querySelectorAll('button');
+      buttons.forEach(b => b.disabled = true);
+      if (idx === item.a){
+        btn.classList.add('correct');
+        fbEl.textContent = '✓ Correct';
+        fbEl.classList.add('good');
+        recentWrongs = 0;
+      } else {
+        btn.classList.add('wrong');
+        buttons[item.a].classList.add('correct');
+        fbEl.textContent = '✗ Wrong — ' + item.opts[item.a] + ' was right';
+        fbEl.classList.add('bad');
+        errors++;
+        // Guess detection: same question wrong 2x => 15s lock + strike
+        wrongTimes[i] = (wrongTimes[i] || 0) + 1;
+        const now = Date.now();
+        if (now - lastWrongAt < 5000) recentWrongs++; else recentWrongs = 1;
+        lastWrongAt = now;
+        if (wrongTimes[i] >= 2){
+          lockedUntil = now + 15000;
+          fbEl.textContent = '⏸ Pattern detected — paused 15s.';
+          setTimeout(() => { render(); }, 15000);
+          return;
+        }
+        // Rapid-fire 4+ wrongs in <5s => strike
+        if (recentWrongs >= 4){
+          strikes++;
+          if (strikes >= 2){
+            // Permanently disable premium for this session
+            const card = document.getElementById('premiumCard');
+            if (card) card.innerHTML = '<h2>Premium locked</h2><p style="color:var(--muted)">Too many incorrect guesses detected. Premium is unavailable for this session.</p>';
+            const sec = document.getElementById('premium');
+            if (sec) sec.style.opacity = '0.4';
+            return;
+          }
+          lockedUntil = now + 20000;
+          fbEl.textContent = '⏸ Slow down — paused 20s.';
+          setTimeout(() => { render(); }, 20000);
+          return;
+        }
+      }
+      i++;
+      fill.style.width = ((i / QUIZ.length) * 100) + '%';
+      score.textContent = i + ' / 5';
+      setTimeout(() => {
+        if (errors >= 2){
+          fbEl.textContent = '✗ Two wrong answers — restarting from the top.';
+          setTimeout(reset, 1500);
+          return;
+        }
+        if (i >= QUIZ.length){
+          if (errors === 0){
+            progress.hidden = true;
+            qBox.hidden = true;
+            reward.hidden = false;
+            // Reveal Pro tier
+            const proSpecs = document.getElementById('pro-specs');
+            const banner = document.getElementById('proBanner');
+            if (proSpecs){ proSpecs.hidden = false; proSpecs.classList.add('show'); proSpecs.scrollIntoView({behavior:'smooth',block:'start'}); }
+            if (banner){ banner.classList.add('shown'); }
+          } else {
+            fbEl.textContent = errors + ' wrong — restarting.';
+            setTimeout(reset, 1200);
+          }
+        } else {
+          render();
+        }
+      }, 1400);
+    }
+
+    startBtn.addEventListener('click', () => {
+      startBtn.hidden = true;
+      progress.hidden = false;
+      qBox.hidden = false;
+      render();
+    });
+  })();
   // (Safari blocks autoplay on file:// until interaction)
   document.addEventListener('click touchstart keydown', function forcePlay(){
     document.querySelectorAll('video[autoplay]').forEach(v => { v.muted = true; v.play().catch(()=>{}); });
@@ -721,7 +1539,8 @@
     const steps = document.querySelectorAll('.up-step');
     if (!knob || !track) return;
 
-    const sections = ['events','facts','history','park','events-feed'];
+    const sections = ['events','facts','history','park','events-feed','premium'];
+    const UNLOCK_ALL = true; // single swipe reveals every section
     let step = 0;
     let dragging = false, startX = 0, knobStart = 0;
 
@@ -745,21 +1564,17 @@
     function stopLoop(){ cancelAnimationFrame(raf); raf = 0; }
 
     function unlock(){
-      if (step >= sections.length) return;
-      const id = sections[step];
-      steps[step].classList.add('done');
-      const el = document.querySelector(`section[data-locked][id="${id}"]`);
-      if (el) el.classList.add('show');
-      step++;
-      if (step >= sections.length){
-        label.textContent = 'unlocked';
-        hint.textContent = 'All sections revealed · scroll freely';
-        knob.style.cursor = 'default';
-        track.parentElement.classList.add('done');
-      } else {
-        label.textContent = ['slide for more','keep going','almost there','one more','final slide'][step-1] || 'slide to unlock';
-        hint.textContent = step + ' / ' + sections.length + ' unlocked';
-      }
+      if (step >= 1) return;
+      // reveal all locked sections except pro-specs (needs quiz pass)
+      document.querySelectorAll('section[data-locked]').forEach(el => {
+        if (el.id !== 'pro-specs') el.classList.add('show');
+      });
+      steps.forEach(s => s.classList.add('done'));
+      step = 1;
+      label.textContent = 'unlocked';
+      hint.textContent = 'All sections revealed · scroll freely';
+      knob.style.cursor = 'default';
+      track.parentElement.classList.add('done');
       pos = 0; velocity = 0;
       knob.style.transform = 'translate3d(0,0,0)';
       fill.style.transform = 'translate3d(-100%,0,0)';
@@ -1069,7 +1884,7 @@
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
+    const s = Math.floor((diff % 60000) / 500);
     root.querySelector('[data-cd="d"]').textContent = pad(d);
     root.querySelector('[data-cd="h"]').textContent = pad(h);
     root.querySelector('[data-cd="m"]').textContent = pad(m);
