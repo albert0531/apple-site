@@ -474,6 +474,31 @@
     .devices{transform:scale(.66)}
   }
 
+  /* ===== Review section ===== */
+  .review-wrap{display:flex;justify-content:center;padding:10px 22px 0}
+  .review-card{width:min(680px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;padding:40px 40px 36px;box-shadow:0 20px 50px -24px rgba(0,0,0,.16)}
+  .review-card h2{font-size:32px;font-weight:600;letter-spacing:-.6px;color:var(--fg);margin:6px 0 8px}
+  .review-sub{color:var(--muted);font-size:16px;line-height:1.55;margin-bottom:22px}
+  .review-label{display:block;font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+  .review-field{width:100%;min-height:150px;resize:vertical;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--soft);color:var(--fg);font-family:inherit;font-size:15px;line-height:1.6;outline:none;transition:border-color .15s,background .15s,box-shadow .15s}
+  .review-field::placeholder{color:#a1a1a6}
+  .review-field:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(0,113,227,.12)}
+  .review-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px;flex-wrap:wrap}
+  .review-count{font-size:13px;color:var(--muted)}
+  .review-count.over{color:#ff3b30}
+  .review-submit{padding:13px 30px;font-size:16px;border-radius:980px;background:var(--accent);color:#fff;border:0;font-family:inherit;font-weight:400;cursor:pointer;transition:background .15s,transform .12s}
+  .review-submit:hover{background:var(--accent-hover)}
+  .review-submit:active{transform:scale(.98)}
+  .review-submit:disabled{background:#c7c7cc;cursor:not-allowed;transform:none}
+  .review-thanks{display:none;align-items:center;gap:14px;padding:22px 24px;border-radius:16px;background:#f0fbf2;border:1px solid #b8e6c4}
+  .review-thanks.shown{display:flex;animation:revPop .4s cubic-bezier(.32,.72,0,1)}
+  .review-thanks svg{flex-shrink:0}
+  .review-thanks strong{display:block;color:#0a6b2a;font-size:17px;font-weight:600;letter-spacing:-.2px}
+  .review-thanks small{display:block;color:#3a7a4c;font-size:13px;margin-top:3px}
+  @keyframes revPop{0%{opacity:0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
+  .review-note{font-size:12px;color:#a1a1a6;margin-top:14px;text-align:center}
+  @media(max-width:540px){.review-card{padding:28px 22px}.review-card h2{font-size:26px}.review-submit{width:100%}}
+
 </style>
 </head>
 <body>
@@ -531,6 +556,7 @@
     <button class="glass-pill" data-target="facts"><span class="g-icon">💡</span><span class="g-label">Did You Know?</span></button>
     <button class="glass-pill" data-target="history"><span class="g-icon">📜</span><span class="g-label">History</span></button>
     <button class="glass-pill" data-target="park"><span class="g-icon">🏛️</span><span class="g-label">Apple Park</span></button>
+    <button class="glass-pill" data-target="review"><span class="g-icon">✍️</span><span class="g-label">Review</span></button>
     <button class="glass-pill" data-target="premium"><span class="g-icon">⭐</span><span class="g-label">Premium</span></button>
   </nav>
 </div>
@@ -689,6 +715,7 @@
         <button class="app" data-target="facts"><span class="app-ico a-notes">📝</span><span class="app-name">Notes</span></button>
         <button class="app" data-target="premium"><span class="app-ico a-rem">✅</span><span class="app-name">Reminders</span></button>
         <button class="app" data-target="events"><span class="app-ico a-cal">📆</span><span class="app-name">Calendar</span></button>
+        <button class="app" data-target="review"><span class="app-ico a-msg">✍️</span><span class="app-name">Review</span></button>
         <button class="app" data-target="park"><span class="app-ico a-stock">📈</span><span class="app-name">Stocks</span></button>
         <button class="app" data-target="premium"><span class="app-ico a-wallet">💳</span><span class="app-name">Wallet</span></button>
         <button class="app" data-target="facts"><span class="app-ico a-health">❤️</span><span class="app-name">Health</span></button>
@@ -1075,6 +1102,31 @@
   </div>
 </section>
 
+<section id="review" data-locked>
+  <div class="section-head">
+    <h2>Review</h2>
+    <p class="sub">Tell me what you think. Your opinion, your feedback, your take.</p>
+  </div>
+  <div class="review-wrap">
+    <div class="review-card">
+      <label class="review-label" for="reviewInput">Your review</label>
+      <textarea class="review-field" id="reviewInput" maxlength="1000" placeholder="What do you think about this page? What did you like or dislike? Any feedback for Albert C.?"></textarea>
+      <div class="review-row">
+        <span class="review-count" id="reviewCount">0 / 1000</span>
+        <button class="review-submit" id="reviewSubmit" type="button" disabled>Submit</button>
+      </div>
+      <div class="review-thanks" id="reviewThanks" role="status" aria-live="polite">
+        <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#34c759"/><path d="M7 12.4l3.4 3.4L17.2 9" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>
+          <strong>Thank you for your feedback.</strong>
+          <small>Your review was submitted. It really helps.</small>
+        </span>
+      </div>
+      <p class="review-note">One review per session. Stored locally in this browser.</p>
+    </div>
+  </div>
+</section>
+
 <section id="premium">
   <div class="wrap premium-wrap">
     <div class="premium-card" id="premiumCard">
@@ -1349,6 +1401,40 @@
       if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
     });
   })();
+  // Review section
+  (function(){
+    const input = document.getElementById('reviewInput');
+    const submit = document.getElementById('reviewSubmit');
+    const thanks = document.getElementById('reviewThanks');
+    const count = document.getElementById('reviewCount');
+    if (!input || !submit) return;
+    const KEY = 'apple-site-review';
+
+    function sync(){
+      const len = input.value.length;
+      count.textContent = len + ' / 1000';
+      count.classList.toggle('over', len >= 1000);
+      submit.disabled = input.value.trim().length === 0;
+    }
+    input.addEventListener('input', sync);
+    sync();
+
+    submit.addEventListener('click', () => {
+      const text = input.value.trim();
+      if (!text) return;
+      try{
+        const all = JSON.parse(localStorage.getItem(KEY) || '[]');
+        all.push({ text, at: new Date().toISOString() });
+        localStorage.setItem(KEY, JSON.stringify(all));
+      }catch(e){ /* storage unavailable — still show thanks */ }
+      input.value = '';
+      input.disabled = true;
+      submit.disabled = true;
+      submit.style.display = 'none';
+      count.style.display = 'none';
+      thanks.classList.add('shown');
+    });
+  })();
   // Home View — app launcher
   (function(){
     const phone = document.querySelector('.home-phone');
@@ -1539,7 +1625,7 @@
     const steps = document.querySelectorAll('.up-step');
     if (!knob || !track) return;
 
-    const sections = ['events','facts','history','park','events-feed','premium'];
+    const sections = ['events','facts','history','park','events-feed','review','premium'];
     const UNLOCK_ALL = true; // single swipe reveals every section
     let step = 0;
     let dragging = false, startX = 0, knobStart = 0;
