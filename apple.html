@@ -363,14 +363,18 @@
     background:radial-gradient(ellipse at 50% 60%,rgba(0,0,0,.22),transparent 70%);
   }
 
-  /* Apple Watch */
-  .dev-watch{width:clamp(58px,7vw,86px);height:clamp(72px,8.6vw,106px);border-radius:clamp(16px,2.1vw,26px);background:linear-gradient(160deg,#e8e8ec,#a9a9b2 45%,#d5d5db);padding:4px}
-  .dev-watch .scr{width:100%;height:100%;border-radius:clamp(13px,1.7vw,22px);background:#000;overflow:hidden;position:relative;padding:8px 7px;color:#fff;font-family:-apple-system,sans-serif;min-width:0}
-  .dev-watch .scr .wk-day{color:#ffd60a;font-size:9px;font-weight:600}
-  .dev-watch .scr .wk-time{font-size:30px;font-weight:300;line-height:.95;letter-spacing:-1px;display:block;white-space:nowrap;overflow:hidden}
-  .dev-watch .scr .wk-sub{font-size:8px;color:#fff;opacity:.9;white-space:nowrap;overflow:hidden;display:block}
-  .dev-watch .scr .wk-temp{position:absolute;right:8px;bottom:26px;font-size:15px;font-weight:600}
-  .dev-watch .scr .wk-sun{position:absolute;left:8px;bottom:8px;font-size:8px;color:#ffd60a}
+  /* Apple Watch — the whole face is sized in em off a single basis on .dev-watch,
+     so every element scales in exact proportion at any width and can never collide. */
+  .dev-watch{--wc:calc(clamp(58px,7vw,86px) - 8px);
+    width:clamp(58px,7vw,86px);height:clamp(72px,8.6vw,106px);border-radius:clamp(16px,2.1vw,26px);background:linear-gradient(160deg,#e8e8ec,#a9a9b2 45%,#d5d5db);padding:4px;
+    font-size:calc(var(--wc) * 0.385)}
+  .dev-watch .scr{width:100%;height:100%;border-radius:clamp(13px,1.7vw,22px);background:#000;overflow:hidden;position:relative;padding:.27em .243em;color:#fff;font-family:-apple-system,sans-serif;min-width:0;display:flex;flex-direction:column;justify-content:flex-start}
+  .dev-watch .scr .wk-day{color:#ffd60a;font-size:.3em;font-weight:600;line-height:1.1;white-space:nowrap;overflow:hidden}
+  .dev-watch .scr .wk-time{font-size:1em;font-weight:300;line-height:.95;letter-spacing:-.04em;display:block;white-space:nowrap;overflow:hidden}
+  .dev-watch .scr .wk-sub{font-size:.27em;color:#fff;opacity:.9;line-height:1.1;white-space:nowrap;overflow:hidden;display:block}
+  .dev-watch .scr .wk-foot{margin-top:auto;padding-top:.054em;display:flex;align-items:center;justify-content:space-between;gap:.027em;line-height:1}
+  .dev-watch .scr .wk-temp{font-size:.51em;font-weight:600;line-height:1}
+  .dev-watch .scr .wk-sun{font-size:.3em;line-height:1}
   .dev-watch .scr .wk-crown{position:absolute;right:-3px;top:26px;width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,#d6d6dc,#9c9ca4)}
 
   /* iPad */
@@ -453,30 +457,23 @@
   /* Device lineup — small screens */
   @media(max-width:900px){
     .devices{gap:8px;flex-wrap:nowrap}
-    .dev-watch{width:54px;height:68px}
+    .dev-watch{--wc:46px;width:54px;height:68px}
     .dev-ipad{width:84px;height:110px}
     .dev-vp{width:98px;height:98px}
     .dev-hp{width:88px;height:88px}
     .dev-iph{width:56px;height:108px}
     .device-stand{width:56px;height:30px}
-    .dev-watch .scr .wk-time{font-size:23px}
     .dev-hp .scr .hp-temp{font-size:25px}
     .dev-iph .scr .ip-title{display:none}
   }
   @media(max-width:620px){
     .devices{gap:4px;flex-wrap:nowrap}
-    .dev-watch{width:42px;height:54px;border-radius:12px;padding:3px}
-    .dev-watch .scr{padding:5px 4px}
+    .dev-watch{--wc:36px;width:42px;height:54px;border-radius:12px;padding:3px}
     .dev-ipad{width:66px;height:88px;border-radius:10px;padding:4px}
     .dev-vp{width:76px;height:76px;border-radius:18px;padding:4px}
     .dev-hp{width:68px;height:68px;border-radius:20px;padding:4px}
     .dev-iph{width:44px;height:86px;border-radius:12px;padding:3px}
     .device-stand{width:44px;height:24px;border-radius:6px 6px 9px 9px}
-    .dev-watch .scr .wk-time{font-size:17px}
-    .dev-watch .scr .wk-day{font-size:6px}
-    .dev-watch .scr .wk-sub{font-size:5.5px}
-    .dev-watch .scr .wk-temp{font-size:10px;right:5px;bottom:16px}
-    .dev-watch .scr .wk-sun{font-size:6px;left:5px;bottom:4px}
     .dev-hp .scr .hp-temp{font-size:17px}
     .dev-hp .scr .hp-lbl{font-size:5.5px}
     .dev-hp .scr .hp-w{font-size:5px;padding:2px 3px;gap:0}
@@ -487,13 +484,12 @@
   }
   @media(max-width:430px){
     .devices{gap:2px}
-    .dev-watch{width:38px;height:49px}
+    .dev-watch{--wc:32px;width:38px;height:49px}
     .dev-ipad{width:60px;height:80px}
     .dev-vp{width:68px;height:68px}
     .dev-hp{width:62px;height:62px}
     .dev-iph{width:40px;height:78px}
     .device-stand{width:40px;height:22px}
-    .dev-watch .scr .wk-time{font-size:15px}
     .dev-hp .scr .hp-temp{font-size:15px}
   }
 
@@ -660,8 +656,10 @@
             <div class="wk-day">Wed 24</div>
             <div class="wk-time">9:41</div>
             <div class="wk-sub">Cupertino</div>
-            <div class="wk-temp">54°</div>
-            <div class="wk-sun">☀️</div>
+            <div class="wk-foot">
+              <span class="wk-sun">☀️</span>
+              <span class="wk-temp">54°</span>
+            </div>
             <span class="wk-crown"></span>
           </div>
         </div>
