@@ -1,2 +1,20 @@
+# Symlinked asset dirs (point outside the repo)
 uploads
 images
+
+# macOS
+.DS_Store
+*.DS_Store
+
+# Sibling projects in this workspace (not part of the apple.html site)
+AppleSite/
+goal-app/
+finesse-fitness/
+.claude/
+translate-explorer.html
+index.html
+README.md
+.gitignore-symbolic-links.txt
+
+# Node
+node_modules/
