@@ -493,6 +493,58 @@
     .dev-hp .scr .hp-temp{font-size:15px}
   }
 
+  /* ===== Devices / pre-order section ===== */
+  .dev-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}
+  .dev-card{position:relative;background:var(--card);border-radius:20px;padding:26px 24px 22px;display:flex;flex-direction:column;gap:3px;overflow:hidden;transition:transform .25s}
+  .dev-card:hover{transform:translateY(-4px)}
+  .dev-art{position:relative;height:132px;margin:-6px -6px 12px;border-radius:16px;background:linear-gradient(160deg,#fbfbfd,#e8e8ee);overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .dev-art::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(150deg,rgba(255,255,255,.75),rgba(255,255,255,0) 52%);pointer-events:none}
+  .dev-tag{display:inline-block;align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .dev-card h3{font-size:21px;font-weight:600;letter-spacing:-.4px;color:var(--fg)}
+  .dev-chip{display:inline-block;align-self:flex-start;font-size:12px;font-weight:600;color:var(--fg);background:rgba(0,0,0,.06);border-radius:980px;padding:3px 10px;margin:7px 0 8px}
+  .dev-card p{font-size:14px;color:var(--muted);line-height:1.5;flex:1}
+  .dev-meta{font-size:12px;color:#a1a1a6;margin-top:10px}
+  .dev-cta{display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .dev-preorder{border-radius:980px;padding:9px 20px;font-size:14px;font-weight:400;text-decoration:none;background:var(--accent);color:#fff;border:0;font-family:inherit;cursor:pointer;transition:background .15s,transform .12s}
+  .dev-preorder:hover{background:var(--accent-hover)}
+  .dev-preorder:active{transform:scale(.98)}
+  .dev-preorder.done{background:#34c759;cursor:default}
+  .dev-sold{font-size:13px;color:var(--muted)}
+
+  /* --- device illustrations inside .dev-art --- */
+  .art{position:relative;filter:drop-shadow(0 12px 18px rgba(0,0,0,.18))}
+  /* MacBook Pro 14" */
+  .art-mbp{width:140px;height:96px}
+  .art-mbp .lid{position:absolute;left:8px;right:8px;top:0;bottom:26px;background:linear-gradient(160deg,#2b2b30,#0d0d10);border-radius:7px 7px 2px 2px;padding:4px}
+  .art-mbp .lid::after{content:"";position:absolute;inset:4px;border-radius:3px;background:linear-gradient(155deg,#1b3a5c,#0a1526 60%,#123);box-shadow:inset 0 0 22px rgba(90,160,230,.28)}
+  .art-mbp .base{position:absolute;left:0;right:0;bottom:4px;height:22px;background:linear-gradient(180deg,#dcdce2,#a9a9b2);border-radius:2px 2px 9px 9px}
+  .art-mbp .base::after{content:"";position:absolute;left:50%;transform:translateX(-50%);top:3px;width:30px;height:3px;border-radius:2px;background:rgba(0,0,0,.2)}
+  /* iMac */
+  .art-imac{width:124px;height:118px}
+  .art-imac .screen{position:absolute;left:0;right:0;top:0;height:88px;background:linear-gradient(160deg,#d8d8de,#9c9ca4);border-radius:7px 7px 3px 3px;padding:6px}
+  .art-imac .screen::after{content:"";position:absolute;inset:6px;border-radius:3px;background:radial-gradient(120% 110% at 25% 15%,#5ec2f5,#2f6fd0 42%,#16305e 78%,#0d1b34)}
+  .art-imac .chin{position:absolute;left:0;right:0;top:88px;height:6px;background:linear-gradient(180deg,#b4b4bc,#d5d5db)}
+  .art-imac .stand{position:absolute;left:50%;transform:translateX(-50%);bottom:6px;width:14px;height:20px;background:linear-gradient(180deg,#c9c9d0,#8e8e96);border-radius:0 0 3px 3px}
+  .art-imac .foot{position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:58px;height:6px;border-radius:50%;background:linear-gradient(180deg,#c9c9d0,#8e8e96)}
+  /* Mac mini */
+  .art-mini{width:76px;height:76px}
+  .art-mini .body{position:absolute;inset:0;background:linear-gradient(160deg,#f6f6f8,#c6c6cf 58%,#e6e6ec);border-radius:16px}
+  .art-mini .body::before{content:"";position:absolute;inset:0 0 auto;height:34%;border-radius:16px 16px 40% 40%/16px 16px 22% 22%;background:linear-gradient(160deg,#ffffff,#e6e6ec)}
+  .art-mini .port{position:absolute;left:11px;right:11px;bottom:11px;height:6px;border-radius:3px;background:rgba(0,0,0,.26)}
+  .art-mini .led{position:absolute;right:12px;bottom:12px;width:5px;height:5px;border-radius:50%;background:#34c759}
+  /* Mac Studio */
+  .art-studio{width:80px;height:80px}
+  .art-studio .body{position:absolute;inset:0;background:linear-gradient(155deg,#fbfbfd,#c4c4cc 55%,#eaeaef);border-radius:14px}
+  .art-studio .vent{position:absolute;left:10px;right:10px;bottom:12px;height:26px;border-radius:6px;background:radial-gradient(circle at 3px 3px,rgba(0,0,0,.22) 1.1px,transparent 1.2px) 0 0/7px 7px}
+  .art-studio .led{position:absolute;left:10px;top:10px;width:4px;height:4px;border-radius:50%;background:#34c759}
+
+  @media(max-width:980px){.dev-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:600px){
+    .dev-grid{grid-template-columns:1fr}
+    .dev-art{height:116px}
+    .dev-card h3{font-size:19px}
+  }
+
   /* ===== Review section ===== */
   .review-wrap{display:flex;justify-content:center;padding:10px 22px 0}
   .review-card{width:min(680px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;padding:40px 40px 36px;box-shadow:0 20px 50px -24px rgba(0,0,0,.16)}
@@ -575,6 +627,7 @@
     <button class="glass-pill" data-target="facts"><span class="g-icon">💡</span><span class="g-label">Did You Know?</span></button>
     <button class="glass-pill" data-target="history"><span class="g-icon">📜</span><span class="g-label">History</span></button>
     <button class="glass-pill" data-target="park"><span class="g-icon">🏛️</span><span class="g-label">Apple Park</span></button>
+    <button class="glass-pill" data-target="devices"><span class="g-icon">🖥️</span><span class="g-label">Devices</span></button>
     <button class="glass-pill" data-target="review"><span class="g-icon">✍️</span><span class="g-label">Review</span></button>
     <button class="glass-pill" data-target="premium"><span class="g-icon">⭐</span><span class="g-label">Premium</span></button>
   </nav>
@@ -762,6 +815,7 @@
         <button class="app" data-target="products"><span class="app-ico a-calc">📊</span><span class="app-name">Pages</span></button>
         <button class="app" data-target="events"><span class="app-ico a-music">🎙️</span><span class="app-name">Voice Memos</span></button>
         <button class="app" data-target="premium"><span class="app-ico a-fit">🌍</span><span class="app-name">Find My</span></button>
+        <button class="app" data-target="devices"><span class="app-ico a-home">🖥️</span><span class="app-name">Devices</span></button>
       </div>
 
       <div class="home-dock">
@@ -1123,6 +1177,95 @@
   </div>
 </section>
 
+<section id="devices" data-locked>
+  <div class="section-head">
+    <h2>Devices</h2>
+    <p class="sub">Everything you can pre-order right now.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="dev-grid">
+
+      <div class="dev-card">
+        <div class="dev-art">
+          <div class="art art-mbp">
+            <div class="lid"></div>
+            <div class="base"></div>
+          </div>
+        </div>
+        <span class="dev-tag">Laptop</span>
+        <h3>MacBook Pro 14"</h3>
+        <span class="dev-chip">M6 Pro</span>
+        <p>Pro laptop on M6 Pro silicon. Liquid Retina XDR, 120Hz, all-day battery.</p>
+        <div class="dev-meta">14.2" Liquid Retina XDR · 24 hr battery · $1,999</div>
+        <div class="dev-cta">
+          <button class="dev-preorder" type="button" data-product="MacBook Pro 14&quot; (M6)">Pre-order</button>
+          <span class="dev-sold">Ships soon</span>
+        </div>
+      </div>
+
+      <div class="dev-card">
+        <div class="dev-art">
+          <div class="art art-imac">
+            <div class="screen"></div>
+            <div class="chin"></div>
+            <div class="stand"></div>
+            <div class="foot"></div>
+          </div>
+        </div>
+        <span class="dev-tag">All-in-one</span>
+        <h3>iMac</h3>
+        <span class="dev-chip">M6</span>
+        <p>All-in-one desktop with a 4.5K Retina display and M6 silicon behind it.</p>
+        <div class="dev-meta">24" 4.5K Retina · M6 chip · $1,299</div>
+        <div class="dev-cta">
+          <button class="dev-preorder" type="button" data-product="iMac (M6)">Pre-order</button>
+          <span class="dev-sold">Ships soon</span>
+        </div>
+      </div>
+
+      <div class="dev-card">
+        <div class="dev-art">
+          <div class="art art-mini">
+            <div class="body"></div>
+            <div class="port"></div>
+            <div class="led"></div>
+          </div>
+        </div>
+        <span class="dev-tag">Desktop</span>
+        <h3>Mac mini</h3>
+        <span class="dev-chip">M6</span>
+        <p>The 5×5-inch desktop. More power than you'd expect from something this small.</p>
+        <div class="dev-meta">5×5 in footprint · M6 chip · $599</div>
+        <div class="dev-cta">
+          <button class="dev-preorder" type="button" data-product="Mac mini (M6)">Pre-order</button>
+          <span class="dev-sold">Ships soon</span>
+        </div>
+      </div>
+
+      <div class="dev-card">
+        <div class="dev-art">
+          <div class="art art-studio">
+            <div class="body"></div>
+            <div class="vent"></div>
+            <div class="led"></div>
+          </div>
+        </div>
+        <span class="dev-tag">Desktop</span>
+        <h3>Mac Studio</h3>
+        <span class="dev-chip">M6 Max</span>
+        <p>Pro desktop powerhouse on M6 Max silicon. Four Pro Displays XDR, one cable.</p>
+        <div class="dev-meta">M6 Max · up to 40-core GPU · $1,999</div>
+        <div class="dev-cta">
+          <button class="dev-preorder" type="button" data-product="Mac Studio (M6)">Pre-order</button>
+          <span class="dev-sold">Ships soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="review" data-locked>
   <div class="section-head">
     <h2>Review</h2>
@@ -1420,6 +1563,36 @@
       const id = btn.dataset.target;
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  })();
+  // Devices pre-order buttons
+  (function(){
+    const KEY = 'apple-site-preorders';
+    const buttons = document.querySelectorAll('.dev-preorder');
+    if (!buttons.length) return;
+
+    function ordered(){
+      try{ return JSON.parse(localStorage.getItem(KEY) || '[]'); }catch(e){ return []; }
+    }
+    function save(list){
+      try{ localStorage.setItem(KEY, JSON.stringify(list)); }catch(e){ /* storage unavailable */ }
+    }
+    function sync(btn){
+      const name = btn.dataset.product;
+      const done = ordered().some(o => o.name === name);
+      btn.classList.toggle('done', done);
+      btn.textContent = done ? '✓ Pre-ordered' : 'Pre-order';
+    }
+    buttons.forEach(btn => {
+      sync(btn);
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.product;
+        const list = ordered();
+        if (list.some(o => o.name === name)) return;
+        list.push({ name, at: new Date().toISOString() });
+        save(list);
+        buttons.forEach(sync);
+      });
     });
   })();
   // Review section
